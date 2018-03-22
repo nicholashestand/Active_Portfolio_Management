@@ -1,0 +1,96 @@
+\begin{problem}{6.1}
+  Manager A is a stock picker. He follows 250 companies, making new forecasts each quarter. His forecasts are 2 percent correlated with subsequent residual returns. Manager B engages in tacit asset allocation, timing four equity styles (value, growth, large, small) every quarter. (a) What must Manager B's skill level be to match Manager A's information ratio? (b) What information ratio could a sponsor achieve by employing both managers, assuming that Manager B has a skill level of 8 percent?
+\end{problem}
+
+\begin{proof}[Solution]
+ \quad\newline
+ \begin{enumerate}[label=(\alph*)]
+   \item{Manager A has an information ratio of
+	\begin{align*}
+	 \mathrm{IR}&=\mathrm{IC}\sqrt{\mathrm{BR}}\\
+	            &=0.02\times\sqrt{1000}\\
+	            &=0.632
+	\end{align*}
+	For manager B to have an information ratio of 0.632, his information coefficient would need to be
+	\begin{align*}
+	 \mathrm{IC}&=\mathrm{IR}/\sqrt{\mathrm{BR}}\\
+		    &=0.632/\sqrt{16}\\
+		    &=0.158
+	\end{align*}
+	So manager B's forecasts would need to be 16\% correlated with the subsequent residual returns.
+	}
+  \item{A sponsor could achieve an information ratio of
+      \begin{align*}
+	\mathrm{IR}&=\sqrt{\mathrm{IR_{A}}^{2} + \mathrm{IR_{B}}{2}}\\
+	      &=\sqrt{0.632^{2} + (0.08*\sqrt{16})^{2}}\\
+	      &=0.71
+      \end{align*}
+      if manager A and B's forecasts are independent and if manager B has an information coefficient of 0.08 (a skill of 8\%), giving him an IC of 0.32.
+    }
+ \end{enumerate}
+\end{proof}
+
+\begin{problem}{6.2}
+ A stock picker follows 500 stocks and updates his alphas every month. He has an $\mathrm{IC}=0.05$ and an $\mathrm{IR}=1.0$. (a) How many bets does he make per year? (b) How many independent bets does he make per year? (c) What does this tell you about his alphas?
+\end{problem}
+
+\begin{proof}[Solution]
+ \quad\newline
+ \begin{enumerate}[label=(\alph*)]
+   \item{The stock picker makes $500\times12=6000$ bets per year.}
+   \item{The stock pickers breadth is 
+   \begin{align*}
+    \mathrm{BR}&=\mathrm{IR}^{2}/\mathrm{IC}^{2}\\
+	       &=(1/.05)^{2}\\
+	       &=400
+   \end{align*}
+    so he makes 400 independent bets per year.}
+    \item{Since the number of bets he makes per year is not equal to the number of independent bets he makes per year, his alphas are not independent.}
+ \end{enumerate}
+\end{proof}
+
+\begin{problem}{6.3}
+ In the example involving residual returns $\theta_{n}$ composed of 300 elements $\theta_{n,j}$, an investment manager must choose between three research programs:
+ \begin{enumerate}[label=(\alph*)]
+   \item{Follow 200 stocks each quarter and accurately forecast $\theta_{n,12}$ and $\theta_{n,15}$}
+   \item{Follow 200 stocks each quarter and accurately forecast $\theta_{n,5}$ and $\theta_{n,105}$}
+   \item{Follow 100 stocks each quarter and accurately forecast $\theta_{n,5}$, $\theta_{n,12}$, and $\theta_{n,105}$}
+ \end{enumerate}
+ Compare the three programs, all assumed to be equally costly. Which would be most effective (highest value added)?  
+\end{problem}
+
+\begin{proof}[Solution]
+ For (a) and (b) there are 800 pieces of information each year, while for (c) there are only 400 pieces of information each year. Furthermore, the residual return of stock $n$ is given by $\theta_{n}=\sum_{j=1}^{300}\theta_{n,j}$.
+ \begin{enumerate}[label=(\alph*)]
+  \item{Here, $\theta_{n,12}$ and $\theta_{n,15}$ are perfectly correlated with $\theta_{n}$ while all others are uncorrelated. Hence, we have $\mathrm{STD}\{\theta_{n}\}=17.32$ (see p 152) and $\mathrm{STD}\{\theta_{n,12}+\theta_{n,15}\}=\sqrt{(0-1)^{2}+(0-1)^{2}}=\sqrt{2}$ since the mean of each $\theta_{n,j}$ is zero and the standard deviation is 1. Furthermore, the covariance between our predictions and the actual return will be 2 since $\theta_{n,12}$ and $\theta_{n,15}$ are forecast perfectly. The $\mathrm{IC}$ is then given by the correlation between the forecasts and the residual return as
+  \begin{align*}
+   \mathrm{IC}&=\frac{\mathrm{Cov}\{\theta_{n},\theta_{n,12}+\theta_{n,15}\}}{\mathrm{STD}\{\theta_{n}\}\times\mathrm{STD}\{\theta_{n,12}+\theta_{n,15}\}}\\
+	      &=2/(17.32\times\sqrt{2})\\
+	      &=0.0817
+  \end{align*}
+  The information ratio is then given by
+  \begin{align*}
+   \mathrm{IR}&=\mathrm{IC}\sqrt{\mathrm{BR}}\\
+	      &=0.0817\times\sqrt{800}\\
+	      &=2.31
+  \end{align*}
+  }
+  \item{This research program will have the same IR as (a). The only difference are the elements that are forecast accurately, but the number of correct forecasts does not change}
+  \item{Using the same reasoning as in (a), we find that
+  \begin{align*}
+   \mathrm{IC}&=\frac{\mathrm{Cov}\{\theta_{n},\theta_{n,5}+\theta_{n,12}+\theta_{n,105}\}}{\mathrm{STD}\{\theta_{n}\}\times\mathrm{STD}\{\theta_{n,5}+\theta_{n,12}+\theta_{n,105}\}}\\
+	      &=\frac{3}{\sqrt{300}\sqrt{3}}\\
+	      &=0.1
+  \end{align*}
+  so
+  \begin{align*}
+   \mathrm{IR}&=0.1\times\sqrt{400}\\
+	      &=2
+  \end{align*}
+  Hence, even though the skill of research program (c) would be better, there aren't enough bets made for the IR to be better than research programs (a) or (b). (a) and (b) will be the most effective strategies and should have the highest value added since $\mathrm{VA}^{2}\propto\mathrm{IR}^{2}$.
+}
+ \end{enumerate}
+
+\end{proof}
+
+

@@ -1,0 +1,96 @@
+\begin{problem}{3.1}
+  If GE has an annual risk of 27.4 percent, what is the volatility of monthly GE returns?
+\end{problem}
+
+\begin{proof}[Solution]
+  From eq (3.6) we have
+  \begin{equation*}
+   \sigma_{annual}=\sqrt{12}\times\sigma_{monthly}
+  \end{equation*}
+  Hence,
+  \begin{align*}
+   \sigma_{monthly}^{GE}&=\frac{27.4\%}{\sqrt{12}} \\
+			&=7.91\%
+  \end{align*}
+\end{proof}
+
+
+\begin{problem}{3.2}
+ Stock A has 25 percent risk stock B has 50 percent risk, an their returns are 50 percent correlated. What fully invested portfolio of A and B has minimum total risk? (\textit{Hint} try solving graphically (e.g. in Excel), if you cannot determine the answer mathematically.)
+\end{problem}
+
+\begin{proof}[Solution]
+ The risk of the portfolio will be (see Eq. (3.1))
+ \begin{equation*}
+  \sigma_{P} = \sqrt{ (f_{A} \sigma_{A})^2 + ((1-f_{A})\sigma_{B})^{2} + 2f_{A}\sigma_{A}(1-f_{A})\sigma_{B}\rho_{AB}}
+ \end{equation*}
+ where $\rho_{AB}$ (=50\%) is the correlation between A and B and $f_{A}$ is the fraction of the portfolio invested in A. The fully invested constraint, $f_{A}+f_{B}=1$ leads to the $1-f_{A}$ term in front of $\sigma_{B}$. To minimize the total risk, we solve 
+ \begin{equation*}
+  \frac{\partial \sigma_{P}}{\partial f_{A}} = 0
+ \end{equation*}
+ for $f_{A}$. We have
+ \begin{equation}
+  \frac{\partial \sigma_{P}}{\partial f_{A}} = \frac{1}{2}\frac{2f_{A}\sigma_{A}^{2}-2(1-f_{A})\sigma_{B}^{2}+(2-4f_{A})\sigma_{A}\sigma_{B}\rho_{AB}}{\sqrt{(f_{A} \sigma_{A})^2 + ((1-f_{A})\sigma_{B})^{2} + 2f_{A}\sigma_{A}(1-f_{A})\sigma_{B}\rho_{AB}}}
+ \end{equation}
+ Setting the numerator to zero, we have
+ \begin{align*}
+  0 &= 2f_{A}\sigma_{A}^{2}-2(1-f_{A})\sigma_{B}^{2}+(2-4f_{A})\sigma_{A}\sigma_{B}\rho_{AB}\\  
+    &= 2f_{A}(\sigma_{A}^{2}+\sigma_{B}^{2})-4f_{A}\sigma_{A}\sigma_{B}\rho_{AB}-2\sigma_{B}^{2}+2\sigma_{A}\sigma_{B}\rho_{AB}\\  
+    2\sigma_{B}^{2}-2\sigma_{A}\sigma_{B}\rho_{AB} &= f_{A}(2\sigma_{A}^{2}+2\sigma_{B}^{2}-4\sigma_{A}\sigma_{B}\rho_{AB})\\
+    f_{A}&=\frac{2\sigma_{B}^{2}-2\sigma_{A}\sigma_{B}\rho_{AB}}{2\sigma_{A}^{2}+2\sigma_{B}^{2}-4\sigma_{A}\sigma_{B}\rho_{AB}}
+ \end{align*}
+ Plugging in the values, we have
+ \begin{align*}
+    f_{A}&=\frac{2(0.25)-2(0.5)(0.25)(0.5)}{2(0.0625)+2(0.25)-4(0.5)(0.25)(0.5)}\\
+         &=\frac{0.375}{0.375}
+         &=1
+ \end{align*}
+ Hence, the portfolio with minimum risk will hold 100\% stock A.
+
+\end{proof}
+
+\begin{problem}{3.3}
+ What is the risk of an equal-weighted portfolio consisting of five stocks, each with 35 percent volatility and a 50 percent correlation with all other stocks? How does that increase as the portfolio increases to 20 stocks or 100 stocks?
+\end{problem}
+
+\begin{proof}[Solution]
+ From eq. (3.4) we have
+ \begin{equation*}
+  \sigma_{P}=\sigma\sqrt{\frac{1+\rho(N-1)}{N}}
+ \end{equation*}
+ Hence, for 5, 20, 100 and an infinite number of stocks, we have
+ \begin{align*}
+  \sigma_{P}^{N=5}&=27.1\%\\
+  \sigma_{P}^{N=20}&=25.4\%\\
+  \sigma_{P}^{N=100}&=24.9\%\\
+  \sigma_{P}^{N=100}&=24.7\%\\
+ \end{align*}
+\end{proof}
+
+\begin{problem}{3.4}
+ How do structural risk models help in estimating asset betas? How do these betas differ from those estimated from a 60-month beta regression?
+\end{problem}
+
+\begin{proof}[Solution]
+ The beta of asset M is defined relative to the benchmark as
+ \begin{equation*}
+  \beta_{M}=\frac{\sigma_{M,B}}{\sigma_{B}^{2}}
+ \end{equation*}
+ Structural risk models allow us to predict the risk of and correlations between stocks from which it is straightforward to calculate asset betas. In this chapter, the authors highlight the pros of using structural risk models and the cons of using regressions from historical data. The pros of structural risk models are
+ \begin{itemize}
+  \item{The size of the problem can be greatly reduced. Instead of dealing with individual stocks and correlations between them, we deal only with factors and correlations between the factors. The stocks can then be projected onto the lower dimensional space of the factors.}
+  \item{The use of factors allows the actual stocks to change. We only need the exposures of the stocks to the factors}
+ \end{itemize}
+ The cons of historical regressions are:
+ \begin{itemize}
+  \item{ Dividends, splits, and mergers are hard to account for}
+  \item{ There is selection bias as failed companies are omitted}
+  \item{In general, the number of observations must be greater than the number of stocks. Hence, for a 60 month beta regression, the observations would have to be daily or weekly, while the forecast would likely be quarterly or yearly.}
+  \item{These models will take much longer to analyze since there are many more stocks than there are risk factors for the factor models}
+ \end{itemize}
+
+
+
+\end{proof}
+
+

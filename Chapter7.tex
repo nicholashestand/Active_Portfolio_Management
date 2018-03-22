@@ -1,0 +1,96 @@
+\begin{problem}{7.1}
+  According to the APT, what are the expected values of the $u_{n}$ in Eq. (7.1)? What is the corresponding relationship for the CAPM?
+\end{problem}
+
+\begin{proof}[Solution]
+  According to the APT, the expected excess return is
+  \begin{align*}
+   f_{n}&=E\{r_{n}\}\\
+	&=E\left\{\sum_{k=1}^{K}X_{n,k}\cdot b_{k} + u_{n}\right\}\\
+	&=\sum_{k=1}^{K}X_{n,k}\cdot m_{k}
+  \end{align*}
+  where $b_{k}$ is the factor return for factor $k$ and $m_{k}$ is the factor forecast for factor $k$. Hence it seems that the expected value of $u_{n}$ is zero. This is in line with the CAPM which is a one factor APT model where the factor is the stock's beta:
+  \begin{align*}
+   f_{n}&=E\{r_{n}\}\\
+	&=E\left\{\beta_{n}r_{M} + \theta_{n}\right\}\\
+	&=\beta_{n}f_{m}
+  \end{align*}
+  where the expected residual return $\theta_{n}$ is zero.
+
+\end{proof}
+
+\begin{problem}{7.2}
+ Work by Fama and French, and others, over the past decade has identified size and book-to-price ratios as two critical factors determining expected returns. How would you build an APT model based on those two factors? Would the model require additional factors?
+\end{problem}
+
+\begin{proof}[Solution]
+ I would use one of the structural models presented in this chapter, and it seems like Structural Model 3 would be the most appropriate. The process might look something like:
+ \begin{enumerate}
+  \item{Take a broad universe of stocks. For each year of historical returns, calculate the size and book to price ratio of each stock. The size will likely need to be standardized (since it is extensive), but I think the book to price ratio will be fine as is, since it is a ratio (it is intensive). This will determine the factor exposures}
+  \item{Regress the yearly returns against the size and book to price ratio of the stocks from step 1 and look for statistically significant correlations. This will give estimates for the factor returns.}
+  \item{Estimate (or calculate) the factor exposures for each stock for the current year we are trying to forecast. From these factor exposures and the historical returns, we can forecast the expected returns for the upcoming year}
+ \end{enumerate}
+ The model should not \textit{require} any additional factors, but they might be useful for building better forecasts.
+\end{proof}
+
+\begin{problem}{7.3}
+ In the example shown in Table 7.2, most of the CAPM forecasts exceed the APT forecasts. Why? Are APT forecasts required to match CAPM forecasts of average?
+\end{problem}
+
+\begin{proof}[Solution]
+ The CAPM forecasts exceed the APT forecast because of the factor forecasts. It could be the other way around depending on the factor forecasts. The forecasts can be anything (there don't seem to be any hard and fast constraints) and so they are not required to match the CAPM forecasts on average.
+\end{proof}
+
+\begin{problem}{7.4}
+ In an earnings-to-price tilt fund, the portfolio holdings consist (approximately) of the benchmark plus a multiple $c$ times the earnings-to-price factor portfolio (which has unit exposure to earnings-to-price and zero exposure all other factors). Thus, the tilt fund manager has an active exposure $c$ to earnings-to-price. If the manager uses a constant multiple $c$ over time, what does that imply about the manager's factor forecasts for earnings-to-price?
+\end{problem}
+
+\begin{proof}[Solution]
+  If a manager uses a constant $c$ over time, that implies that his forecasts for earnings-to-price are not changing. However, the exposures to earnings to price will be changing leading to changes in the stock forecasts.
+\end{proof}
+
+
+\begin{problem}{7.5}
+  You have built an APT model based on industry, growth, bond beta, size, and return on equity (ROE). This month your factor forecasts are
+  \begin{center}
+   \begin{tabular}{l r}
+    Heavy electrical industry 	& 6.0\% \\
+    Growth			& 2.0\% \\
+    Bond beta			& -1.0\% \\
+    Size 			& -0.5\% \\
+    ROE				&  1.0\% 
+   \end{tabular}
+  \end{center}
+  These forecasts lead to a benchmark expected excess return of 6.0 percent. Given the following data for GE,
+  \begin{center}
+   \begin{tabular}{l r}
+    Industry			& Heavy electrical \\
+    Growth			& -0.24 \\
+    Bond beta			&  0.13 \\
+    Size 			&  1.56 \\
+    ROE				&  0.15 \\
+    Beta			&  1.10
+   \end{tabular}
+  \end{center}
+  what is its alpha according to your model
+\end{problem}
+
+\begin{proof}[Solution]
+  We can calculate the expected excess return as
+  \begin{equation*}
+   f_{GE} = \sum_{k}X_{k}b_{k}
+  \end{equation*}
+  where the factor returns $b_{k}$ are given in the first table and the factor exposures, $X_{k}$ are given in the second table. Hence we have
+  \begin{align*}
+   f_{GE} &= 1\times 6\% +(-0.24)\times2.0\% + 0.13\times(-1.0\%) +1.56\times(-0.5\%) + 0.15\times(1.0\%)\\
+	  &=4.76\%
+  \end{align*}
+  Hence, alpha is given by
+  \begin{align*}
+   \alpha_{GE}&=f_{GE} -\beta_{GE}\times f_{M}\\
+	      &=4.76\% - 1.1\times6\%\\
+	      &=-1.84\%
+  \end{align*}
+
+
+\end{proof}

@@ -1,0 +1,166 @@
+\begin{problem}{5.1}
+ What is the information ratio of a passive manager?
+\end{problem}
+
+\begin{proof}[Solution]
+ Passive managers will just invest in the benchmark and so their residual returns and risk will be zero. The information ratio will therefore be zero by definition.
+\end{proof}
+
+\begin{problem}{5.2}
+ What is the information ratio required to add a risk-adjusted return of 2.5 precent with a moderate risk aversion level of 0.10? What level of active risk would that require?
+\end{problem}
+
+\begin{proof}[Solution]
+ We want to find the IR consistent with a rigk-adjusted value added of 2.5\% and a risk aversion of 0.10. From eq. (5.12) we have
+ \begin{equation*}
+  \mathrm{VA^{*}}=\frac{\mathrm{IR}^{2}}{4\lambda_{R}}
+ \end{equation*}
+ Which implies
+ \begin{align*}
+  \mathrm{IR}&=2\sqrt{\lambda_{R}\mathrm{VA^{2}}}\\
+	     &=2\sqrt{0.1\times2.5\%}\\
+	     &=1
+ \end{align*}
+ From eq. (5.10) we can then calculate the active risk as
+ \begin{align*}
+  \omega^{*}&=\frac{\mathrm{IR}}{2\lambda_{R}}\\
+	    &=\frac{1}{2*.1}\\
+	    &=5\%
+ \end{align*}
+\end{proof}
+
+\begin{problem}{5.3}
+ Starting with the universe of MMI stocks, we make the assumptions
+ \begin{itemize}
+  \item[]{$Q=$ MMI portfolio}
+  \item[]{$f_{q}=$ 6\%}
+  \item[]{$B=$ capitalization-weighted MMI portfolio}
+ \end{itemize}
+ We calculate (as of January 1995) that
+ \begin{center}
+ \begin{tabular}{c c c c}
+  \centering
+  \textbf{Portfolio}	& $\bm{\beta}$ \textbf{with Respect to $B$}	& $\bm{\beta}$ \textbf{with Respect to $Q$}	& \textbf{$\bm{\sigma}$}	\\
+  \hline
+  $B$	& 1.000	& 0.965	& 15.50\% \\
+  $Q$	& 1.004	& 1.000	& 15.82\% \\
+  $C$	& 0.865	& 0.831 & 14.42\% \\
+ \end{tabular}
+ \end{center}
+ where portfolio $C$ is the minimum-variance (fully invested) portfolio. For each portfolio ($Q$, $B$, and $C$), calculate $f$, $\alpha$, $\omega$, SR, and IR.
+\end{problem}
+
+\begin{proof}[Solution]
+  For portfolio $B$ we have:
+  \begin{align*}
+   \alpha_{B} &= \omega_{B} = 0 \text{\quad(since B is the benchmark)} \\
+   f_{B}&=\beta_{B,Q}f_{Q} + \alpha_{B}\\
+        &= 0.965\times6\% -0 \\
+        &= 5.79\% \\
+   \mathrm{SR} &= f_{B}/\sigma_{B}\\
+	       &= 5.79\%/15.50\% \\
+	       &=0.374\\
+   \mathrm{IR} &= \alpha_{B}/\omega_{B} \\
+	       &= 0 \text{\quad(by definition)}
+  \end{align*}
+
+  
+  For portfolio $Q$ we have:
+  \begin{align*}
+   f_{Q}&= 6\%\text{\quad(by definition)}\\
+   \alpha_{Q} &= f_{Q} - \beta_{Q,B}f_{B} \\
+	      &= 6\% - 1.004\times5.79\% \\
+	      &= 0.187\%\\
+   \omega_{Q} &= \sqrt{\sigma_{Q}^{2}-\beta_{Q,B}^{2}\sigma_{B}^{2}}\\
+	      &= \sqrt{(15.82\%)^{2} -1.004^{2}\times(15.5\%)^{2}}\\
+	      &= 2.85\%\\
+   \mathrm{SR} &= f_{Q}/\sigma_{Q} \\
+	       &= 6\%/15.82\%\\ 
+	       &=0.379\\
+   \mathrm{IR} &= \alpha_{Q}/\omega_{Q}\\
+	       &= 0.187\%/2.85\%\\
+	       &= 0.066
+  \end{align*}
+  
+  For portfolio $C$ we have:
+  \begin{align*}
+   f_{C} &= \beta_{C,B}f_{B}/\beta_{Q,B} \text{\quad (see Eq 2A.38)}\\
+	 &= 0.865\times 5.79\% / 1.004 \\
+	 &= 4.99\%\\
+   \alpha_{C} &= f_{C} - \beta_{C,B}f_{B} \\
+	      &= 4.99\% - 0.865\times5.79\% \\
+	      &= -0.018\%\\
+   \omega_{C} &= \sqrt{\sigma_{C}^{2}-\beta_{C,B}^{2}\sigma_{B}^{2}}\\
+	      &= \sqrt{(14.42\%)^{2} -0.865^{2}\times(15.50\%)^{2}}\\
+	      &= 5.31\%\\
+   \mathrm{SR} &= f_{C}/\sigma_{C} \\
+	       &= 4.99\%/14.42\%\\ 
+	       &=0.346\\
+   \mathrm{IR} &= \alpha_{C}/\omega_{C}\\
+	       &= -0.018\%/5.31\%\\
+	       &= -0.0034\%
+  \end{align*}
+\end{proof}
+
+
+\begin{problem}{5.4}
+ You have a residual risk aversion of $\lambda_{R}=0.12$ and an information ratio of $\mathrm{IR}=0.60$. What is your optimal level of residual risk? What is your optimal value added?
+\end{problem}
+
+\begin{proof}[Solution]
+ From eq. (5.10), the optimal residual risk is:
+ \begin{align*}
+  \omega^{*}&=\frac{\mathrm{IR}}{2\lambda_{R}}\\
+	    &=\frac{0.60}{2\times 0.12}\\
+	    &=2.5\%
+ \end{align*}
+ The optimal value added is (see eq. (5.12)):
+ \begin{align*}
+  \mathrm{VA^{*}}&=\frac{\mathrm{IR}^{2}}{4\lambda_{R}}\\
+		 &=\frac{0.60^{2}}{4\times0.12}\\
+		 &=0.75\%
+ \end{align*}
+\end{proof}
+
+\begin{problem}{5.5}
+ Oops. In fact, your information ratio is really only $\mathrm{IR}=0.30$. How much value added have you lost by setting your residual risk level according to Problem 4 instead of at its correct optimal level?
+\end{problem}
+
+\begin{proof}[Solution]
+ The optimal residual risk for $\mathrm{IR}=0.30$ is
+ \begin{align*}
+  \omega^{*}&=\frac{\mathrm{IR}}{2\lambda_{R}}\\
+	    &=\frac{0.30}{2\times 0.12}\\
+	    &=1.25\%
+ \end{align*}
+ The value added using the optimal residual risk is
+ \begin{align*}
+  \mathrm{VA^{*}}&=\frac{\mathrm{IR}^{2}}{4\lambda_{R}}\\
+		 &=\frac{0.30^{2}}{4\times0.12}\\
+		 &=0.1875\%
+ \end{align*}
+ The value added using the residual risk from problem 4 is (see eq. (5.9)
+ \begin{align*}
+  \mathrm{VA}[\omega]&=\omega\cdot\mathrm{IR}-\lambda_{R}\cdot \omega^{2}\\
+		     &=2.5\%\times 0.30 - 0.12\times(2.5\%)^{2}\\
+		     &=0
+ \end{align*}
+ Hence, by using the non-optimal residual risk from problem 4, we loose 0.1875\% value added.
+\end{proof}
+
+\begin{problem}{5.6}
+ You are an active manager with an information ratio of $\mathrm{IR}=0.50$ (top quartile) an a target level of residual risk of 4 percent. What residual risk aversion should lead to that level of risk?
+\end{problem}
+
+\begin{proof}[Solution]
+ From eq. (5.11) we have
+ \begin{align*}
+  \lambda_{R}&=\frac{\mathrm{IR}}{2\omega^{*}}\\
+	     &=\frac{0.50}{2\times 4\%}\\
+	     &=0.0625/\%
+ \end{align*}
+
+\end{proof}
+
+
+

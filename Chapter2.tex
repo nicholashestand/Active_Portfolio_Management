@@ -1,0 +1,86 @@
+\begin{problem}{2.1}
+ In December 1992, Sears had a predicted beta of 1.05 with respect to the S\&P 500 index. If the S\&P 500 Index subsequently underperformed Treasury bills by 5.0 percent, what would be the expected excess return to sears?
+\end{problem}
+
+\begin{proof}[Solution]
+ The excess return on the market (relative to the risk free asset Treasury bills) is -5\%. Hence, the excess return to Sears is
+ \begin{align*}
+  r_{Sears} &= \beta_{Sears}r_{M} \\
+            &= 1.05 \times -5.0\% \\
+            &= -5.25 \%
+ \end{align*}
+
+\end{proof}
+
+\begin{problem}{2.2}
+ If the long-term expected excess return to the S\&P 500 Index is 7 percent per year, what is the expected excess return to Sears.
+\end{problem}
+
+\begin{proof}[Solution]
+ Using the same line of reasoning as above, we have
+ \begin{align*}
+  r_{Sears} &= \beta_{Sears}r_{M} \\
+            &= 1.05 \times 7.0\% \\
+            &= 7.35 \%
+ \end{align*}
+\end{proof}
+
+\begin{problem}{2.3}
+ Assume that residual returns are uncorrelated across stocks. Stock A has a beta of 1.15 and a volatility of 35 percent. Stock B has a beta of 0.95 and a volatility of 33 percent. If the market volatility is 20 percent, what is the correlation of stock A with stock B? Which stock has higher residual volatility?
+\end{problem}
+
+\begin{proof}[Solution]
+ The variance of a portfolio $P$ is given by eq. (2.4) as
+ \begin{equation*}
+  \sigma_{P}^{2} = \beta_{P}^{2}\sigma_{M}^{2} + \omega_{P}^{2}
+ \end{equation*}
+ where $\omega_{P}^{2}$ is the residual variance and $\sigma_{M}^{2}$ is the market variance. The correlation of stock A with stock B is given by
+ \begin{equation*}
+  \mathrm{Corr}\left\{r_{A},r_{B}\right\} = \frac{\mathrm{Cov}\left\{r_{A},r_{B}\right\}}{\mathrm{Std}\left\{r_{A}\right\}\mathrm{Std}\left\{r_{B}\right\}}
+ \end{equation*}
+ So we just need the covariance of stocks A and B. We can write
+ \begin{equation*}
+  \mathrm{Cov}\left\{r_{A},r_{B}\right\} = \beta_{A}\beta_{B}\sigma_{M}^{2} + \omega_{A,B}
+ \end{equation*}
+  where the cross terms have been omitted since the residual volatility is uncorrelated from the market volatility. We can also set the residual covariance ($\omega_{A,B}$) to zero since we are assuming that the residual returns are uncorrelated across stocks. Hence the correlation of stock A with stock B is
+  \begin{align*}
+   \mathrm{Corr}\left\{r_{A},r_{B}\right\} &= \frac{\mathrm{Cov}\left\{r_{A},r_{B}\right\}}{\mathrm{Std}\left\{r_{A}\right\}\mathrm{Std}\left\{r_{B}\right\}} \\
+					   &= \frac{\beta_{A}\beta_{B}\sigma_{M}^{2}}{\sigma_{A}\sigma_{B}} \\
+					   &= \frac{1.15\times0.95\times(20\%)^{2}}{35\%\times33\%} \\
+					   &= 0.3784
+  \end{align*}
+  We can determine the residual volatility of stock $P$ from
+  \begin{equation*}
+   \omega_{P} = \sqrt{\sigma_{P}^{2}-\beta_{P}^{2}\sigma_{M}^{2}}
+  \end{equation*}
+  Hence, 
+  \begin{align*}
+   \omega_{A} &= \sqrt{\sigma_{A}^{2}-\beta_{A}^{2}\sigma_{M}^{2}}\\
+	      &= \sqrt{(35\%)^{2}-1.15^{2}\times(20\%)^{2}}\\
+	      &= 26.38 \%
+  \end{align*}
+  \begin{align*}
+   \omega_{B} &= \sqrt{\sigma_{B}^{2}-\beta_{B}^{2}\sigma_{M}^{2}}\\
+	      &= \sqrt{(33\%)^{2}-0.95^{2}\times(20\%)^{2}}\\
+	      &= 26.98 \%
+  \end{align*}
+  so portfolio B has higher residual volatility.
+
+\end{proof}
+
+\begin{problem}{2.4}
+ What set of expected returns would lead us to invest 100 percent in GE stock?
+\end{problem}
+
+\begin{proof}[Solution]
+ According to the CAPM, investing in anything other than the market portfolio involves taking on excess risk. Hence, investing 100 percent in GE stock would expose us to unnecessary risk. In order to minimize risk, we should simply invest in the market portfolio. If we didn't care about risk, we would invest 100 percent in GE whenever the expected returns on the market are positive since GE has a historical beta of 1.3 (table 2.1), which is the highest beta of the MMI stocks in table 2.1.
+\end{proof}
+
+\begin{problem}{2.5}
+ According to the CAPM, what is the expected residual return of an active manager?
+\end{problem}
+
+\begin{proof}[Solution]
+ The CAPM states that the expected residual return on all stocks is zero.
+\end{proof}
+
