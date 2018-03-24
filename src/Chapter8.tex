@@ -1,0 +1,103 @@
+\begin{problem}{8.1}
+  In the simple stock example described in the text, value a European call option on the stock with a strike price of 50, maturing at the end of the 1-month period. The option cash flows at the end of the period are Max\{0,$p(t,s)-50$\}, where $p(t,s)$ is the stock price at time $t$ in state $s$.
+\end{problem}
+
+\begin{proof}[Solution]
+  In the stock example in the text, a stock is currently valued at 50 and in 1 month will be worth either 49 ($p_{down}=49$) or 53 ($p_{up}=53$) with equal probability($\pi_{up}=\pi_{down}=0.5$). The risk free interest rate, $i_{F}$ over the year is 6 percent so that the return after 1 month is given by $R_{F}=(1+i_{F})^{1/12})=1.00487$. Furthermore, the valuation multiples are $\nu_{up}=0.62$ and $\nu_{down}=1.38$. We can use equations 8.8 and 8.9 to value the stock as
+  \begin{align*}
+   p_{0} &= \frac{\pi_{up}\nu_{up}p_{up} + \pi_{down}\nu_{down}p_{down}}{R_{F}} \\
+	 &= \frac{0.5\times0.62\times53 + 0.5\times1.38\times49}{1.00487}\\
+	 &= 50
+  \end{align*}
+  The value of the option can be calculated similarly by replacing the stock price at the end of the period with the value of the option at the end of the period. The value of the option is either 0 or 3, if the stock went down or up respectively. Hence, the current value of the option is
+  \begin{align*}
+   p_{0} &= \frac{\pi_{up}\nu_{up}c_{up} + \pi_{down}\nu_{down}c_{down}}{R_{F}}\\
+	 &= \frac{0.5\times0.62\times3 + 0.5\times1.38\times0}{1.00487}\\
+	 &= 0.93
+  \end{align*}
+\end{proof}
+
+\begin{problem}{8.2}
+ Compare Eq. (8.16) to the CAPM result for expected returns, to relate $\nu$ to $r_{Q}$. Impose the requirement that $E\{\nu\}=1$ to determine $\nu$ exactly as a function of $r_{Q}$.
+\end{problem}
+
+\begin{proof}[Solution]
+  Equation 8.16 says that the expected return is given by
+  \begin{equation*}
+   \mathrm{E}\{R\}=1+i_{F}-\mathrm{Cov}\{\nu,R\}
+  \end{equation*}
+  By comparing to the expected return according to the CAPM
+  \begin{equation*}
+   \mathrm{E}\{R\}=1+i_{F}+\beta f_{Q}
+  \end{equation*}
+  we find that
+  \begin{align*}
+   \mathrm{Cov}\{\nu,R\}&=-\beta f_{Q}\\
+			&=-\frac{\mathrm{Cov}\{r_{Q},R\}}{\sigma_{Q}^{2}}f_{Q}\\
+  \end{align*}
+  Using the definition of covariance,
+  \begin{align*}
+    \mathrm{E}\{\nu\cdot R\}-\mathrm{E}\{\nu\}\mathrm{E}\{R\}&=-\frac{\mathrm{E}\{r_{Q}\cdot R\}-\mathrm{E}\{r_{Q}\}\mathrm{E}\{R\}}{\sigma_{Q}^{2}}f_{Q}\\	
+    \mathrm{E}\{\nu\cdot R\}&=\mathrm{E}\{\nu\}\mathrm{E}\{R\}-\frac{\mathrm{E}\{r_{Q}\cdot R\}-f_{Q}\mathrm{E}\{R\}}{\sigma_{Q}^{2}}f_{Q}\\
+    \mathrm{E}\{\nu\cdot R\}&=\mathrm{E}\left\{R\left[\mathrm{E}\{\nu\}+\frac{f_{Q}}{\sigma_{Q}^{2}}\left(f_{Q}-r_{Q}\right)\right]\right\}
+  \end{align*}
+  Which implies
+  \begin{equation*}
+   \nu = 1 + \frac{f_{Q}}{\sigma_{Q}^{2}}\left(f_{Q}-r_{Q}\right)
+  \end{equation*}
+  after imposing the condition that $\mathrm{E}\{\nu\}=1$.
+  
+  
+\end{proof}
+
+\begin{problem}{8.3}
+ Using the simple stock example in the text, (a) price an instrument which pays \$1 in state 1 [$\mathrm{cf}(t,1)=1$] and -\$1 in state 2 [$\mathrm{cf}(t,2)=-1$]. (b) What is the expected return to this asset? (c) What is its beta with respect to the stock? (d) How does this relate to the breakdown of Eq. (8.7)?
+\end{problem}
+
+
+\begin{proof}[Solution]\quad\\
+ \begin{enumerate}[label=(\alph*)]
+  \item{State 1 corresponds to when the stock is down and state two corresponds to when the stock is up. Using the same procedure and valuation multiples as in problem 1, the price is
+	\begin{align*}
+	 p_{0} &= \frac{0.5}{1.00487}\left(\times1.38\times 1 - 0.62\times1\right)\\
+	       &= 0.378
+	\end{align*}
+	}
+  \item{The expected return is
+	\begin{align*}
+	 \mathrm{E\{R\}} &= 0.5 \times 1 + 0.5\times -1\\
+			 &= 0
+	\end{align*}
+	}
+  \item{The beta of the asset (A) with respect to the stock (S) is
+	\begin{align*}
+	  \beta &= \frac{\mathrm{Cov}\{A,S\}}{\sigma_{S}^{2}} \\
+		&= \frac{ (49-51)\times(1-0)/2 + (53-51)\times(-1-0)/2}{(49-51)^{2}/2 + (53-51)^{2}/2}\\
+		&= \frac{-2}{4}\\
+		&= -1/2
+	\end{align*}
+	}
+  \item{According to equation 8.7
+	\begin{align*}
+	 p_{0} &= \frac{\mathrm{E}\{\mathrm{cf}\}}{1+i_{F}+\beta f_{S}} \\
+	       &= 0
+	\end{align*}
+	Because the expected value of the asset is zero, the price will always be zero, an equation (8.7) will therefore not be able to properly value the stock, regardless of the value of the discount rate in the denominator.
+	}
+ \end{enumerate}
+
+\end{proof}
+
+\begin{problem}{8.4}
+  You believe that stock $X$ is 25 percent undervalued, and that it will take 3.1 years for half of this misvaluation to disappear. What is your forecast for the alpha of stock $X$ over the next year?
+\end{problem}
+
+\begin{proof}[Solution]
+  We want to use equation (8.22) but first we have to define $\kappa$ and $\gamma$. $\kappa$ is given as 0.25 and $\gamma$ can be found from $\tau=-0.69/\ln\{\gamma\}$ where $\tau=3.1$ years is the misvaluation half life. Hence, $\gamma=\exp(-0.69/3.1)=0.80$. Plugging these values into equation 8.22, we find
+  \begin{align*}
+   \alpha &= (1+i_{F})\cdot\left[\frac{\kappa\cdot(1-\gamma)}{1+\kappa\cdot\gamma}\right]\\
+	  &= (1.06)\cdot\left[\frac{0.25\times(1-0.8)}{1+0.25\times0.8}\right]\\
+	  &=0.044
+  \end{align*}
+
+\end{proof}
