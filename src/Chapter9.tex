@@ -1,0 +1,71 @@
+\begin{problem}{9.1}
+  According to Modigliani and Miller (and ignoring tax effects), how would the value of a firm change if (a) it borrowed money to repurchase outstanding common stock, greatly increasing its leverage? (b) What if it changed its payout ratio?
+\end{problem}
+
+\begin{proof}[Solution]
+  Modigliani and Miller demonstrated that (1) dividend policy only influences the scheduling of cash flows received by the share holder and that it does not affect the total value of the payments and (2) a firms financing policy does not affect the total value of the firm. Hence, the value of the firm will not be affected in either case (a) or (b). The value of a firm comes from its profitable activities and not dividend and financing policies.
+\end{proof}
+
+\begin{problem}{9.2}
+ Discuss the problem of growth forecasts in the context of the constant-growth dividend discount model [Eq. (9.5)]. How would you reconcile the growth forecasts with the implied growth forecasts for AT\&T in Tables 9.1 and 9.2?
+\end{problem}
+
+\begin{proof}[Solution]
+ The authors mention that the raw growth forecasts can be unrealistic due to bias. Since the dividend discount model depends sensitively on the growth forecasts, it is important to have good forecasts. The implied growth rates, which assume the asset is fairly priced, can help adjust the growth forecasts to more realistic value. Fore instance, the raw growth forecast for AT\&T in table 9.2 is -19.21\% and the implied growth rate, given in table 9.1, is 6.26\%. Using equation (9.22) results in a more modest AT\&T growth forecast of 2.21\%. Hence, the implied growth rates can be used to correct unrealistic growth forecasts.
+\end{proof}
+
+\begin{problem}{9.3}
+  Stock X has a beta of 1.20 and pays no dividend. If the risk-free rate is 6 percent and the expected excess market return is 6 percent, what is stock X's implied growth rate?
+\end{problem}
+
+\begin{proof}[Solution]
+  Using equation (9.20), the implied growth rate is given by
+  \begin{align*}
+   g_{X}^{*}&=(i_{F}+\beta_X\cdot f_{B}) - \frac{d_{X}}{p_{X}}\\
+	    &=6\% + 1.2\times 6\% - 0 \\
+	    &=13.2\%
+  \end{align*}
+\end{proof}
+
+\begin{problem}{9.4}
+  You are a manager who believes that book-to-price (B/P), earnings to price (E/P), and beta are the three variables that determine stock value. Given monthly B/P, E/P, and beta values for 500 stocks, how could you implement your strategy (a) using comparative valuation? (b) using returns-based analysis?
+\end{problem}
+
+\begin{proof}[Solution]
+  \quad\\
+  \begin{enumerate}[label=(\alph*)]
+   \item{To use comparative valuation, we would regress the companies current price against the three variables to come up with a price equation in the form of (9.43). The error associated with our price function and the actual price would identify misvaluation. It would be wise to check for outliers to make sure that they are not dominating the regression coefficients and skewing the model.}
+   \item{Given monthly attributes (or exposures) for each stock, we can regress an equation in the form of (9.46) to determine the factor returns, $b_{k}(t)$, during each time period (or for each month). We can then use these factor returns to model future returns given current exposures of each stock to the factors. It might also be useful to look at how the error, or idiosyncratic, terms vary with time. If they are constant in time, this would identify that our model can be improved by choosing appropriate factors.}
+  \end{enumerate}
+
+ 
+\end{proof}
+
+\begin{problem}{9.5}
+  A stock trading with a P/E ratio of 15 has a payout ratio of 0.5 and an expected return of 12 percent. What is its growth rate, according to the constant-growth DDM?
+\end{problem}
+
+\begin{proof}[Solution]
+  From equation (9.7), the growth rate is given by
+  \begin{equation*}
+   g=i_{F}+f-\frac{d}{p}
+  \end{equation*}
+  The dividends are given by
+  \begin{equation*}
+   d=\kappa\cdot e
+  \end{equation*}
+  where $\kappa$ is the payout ratio and $e(t)$ are the earning. Since the P/E ratio is 15, we can write
+  \begin{align*}
+   \frac{d}{p}&=\kappa \cdot \frac{e}{p}\\
+	      &=0.5 \times \frac{1}{15} \\
+	      &=0.0\bar{3}
+  \end{align*}
+  Hence, given an expected return of 12 percent, the growth rate is
+  \begin{align*}
+   g&=0.12 - 0.0\bar{3}\\
+    &=0.08\bar{6}\\
+  \end{align*}
+
+
+
+\end{proof}
