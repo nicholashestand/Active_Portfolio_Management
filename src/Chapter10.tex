@@ -7,13 +7,26 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Using the alpha's from table 10.3 from the refined forecasts, the optimizer will chose the stock that maximizes $h_{n}$ as the largest positive active holding. This means that only stocks with positive $\alpha$ need to be considered. If we calculate $h_{a}$ for all stocks with a positive alpha (regardless of tolerance to risk, $\lambda_{R}$) we find that the $\alpha/\omega_{n}^{2}$ ratio is largest for AT\&T, where it equals 0.056635. Even though AT\&T has the smallest $\alpha$, it also has the smallest $\omega$. If instead of the refined forecasts, buy recommendations were given $\alpha=1$ and sell recommendations were given $\alpha=-1$, the optimizer would just pick the buy recommendation with the smallest residual volatility, which in this case is AT\&T.
 \end{proof}
 
 \begin{problem}{10.2}
-  For the situation described in Problem 1, show that using the forecasting rule of thumb, we assume equal risk for each asset. What happens if we just use $\alpha=1$ or buys and $\alpha=-1$ for sells?
+  For the situation described in Problem 1, show that using the forecasting rule of thumb, we assume equal risk for each asset. What happens if we just use $\alpha=1$ for buys and $\alpha=-1$ for sells?
 \end{problem}
 
 \begin{proof}[Solution]
+  The forecasting rule of thumb states
+  \begin{equation*}
+   \mathrm{Refined~forecast} = \mathrm{volatility}\times\mathrm{IC}\times\mathrm{score}
+  \end{equation*}
+  If we assign just assign $\alpha=1$ for buy and $\alpha=-1$ for sell, since the IC are constant and the scores are 1 for buy and 1 for sell, we find that the volatility for each stock is
+  \begin{align*}
+   \mathrm{volatility} &= 1 / (0.09\times 1) \mathrm{~for~buy}\\
+   \mathrm{volatility} &= -1 / (0.09\times -1) \mathrm{~for~sell}
+  \end{align*}
+  Hence, using $\alpha=1$ for buys and $\alpha=-1$ for sells assumes equal risk for each asset.
+
+  
 \end{proof}
 
 
@@ -22,14 +35,153 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Since Eq (10.20) is a refined forecast, let us start with the definition of the refined forecast in Eq. (10.2). We have
+  \begin{equation*}
+    \bm{\phi}=\mathrm{Cov}\{\bm{r},\bm{g}\}\cdot\mathrm{Var}^{-1}\{\bm{g}\}\cdot(\bm{g}-E\{\bm{g}\})
+  \end{equation*}
+  For the case of one asset and two forecasts, the vectors and matrices can be written as
+  \begin{align*}
+   \mathrm{Cov}\{\bm{r},\bm{g}\}&=\mathrm{Std}\{r\}\cdot \bm{\rho_{r,g}}\cdot\mathrm{Std}\{\bm{g}\}\\
+				&= \sigma_{r}\cdot
+				 \begin{bmatrix}
+				  \mathrm{IC}_{g_{1}} & \mathrm{IC}_{g_{2}} \\
+				 \end{bmatrix}
+				\cdot\begin{bmatrix}
+				   \mathrm{Std}\{g_{1}\}	&	0 			\\
+				   0				&	\mathrm{Std}\{g_{2}\}   \\
+				  \end{bmatrix}\\
+    \mathrm{Var}^{-1}\{\bm{g}\}&=\mathrm{Std}\{\bm{g}\}^{-1}\bm{\rho_{g_{1},g_{2}}}^{-1}\mathrm{Std}\{\bm{g}\}^{-1}\\
+			       &=\begin{bmatrix}
+				   \frac{1}{\mathrm{Std}\{g_{1}\}}	&	0 			\\
+				   0				&	\frac{1}{\mathrm{Std}\{g_{2}\}}   \\
+				  \end{bmatrix}
+				  \frac{1}{\rho_{g_{1}g_{1}}\rho_{g_{2}g_{2}}-\rho_{g_{1}g_{2}}\rho_{g_{2}g_{1}}}
+				  \begin{bmatrix}
+				   \rho_{g_{2}g_{2}}	&	-\rho_{g_{2}g_{1}}   \\
+				   -\rho_{g_{1}g_{2}}	&	 \rho_{g_{1}g_{1}}   \\
+				  \end{bmatrix}
+				  \cdot\begin{bmatrix}
+				   \frac{1}{\mathrm{Std}\{g_{1}\}}	&	0 			\\
+				   0				&	\frac{1}{\mathrm{Std}\{g_{2}\}}   \\
+				  \end{bmatrix}\\
+				&=\begin{bmatrix}
+				   \frac{1}{\mathrm{Std}\{g_{1}\}}	&	0 			\\
+				   0				&	\frac{1}{\mathrm{Std}\{g_{2}\}}   \\
+				  \end{bmatrix}
+				  \frac{1}{1-\rho_{g_{1}g_{2}}^{2}}
+				  \begin{bmatrix}
+				   1	&	-\rho_{g_{2}g_{1}}   \\
+				   -\rho_{g_{1}g_{2}}	&	 1   \\
+				  \end{bmatrix}
+				  \cdot\begin{bmatrix}
+				   \frac{1}{\mathrm{Std}\{g_{1}\}}	&	0 			\\
+				   0				&	\frac{1}{\mathrm{Std}\{g_{2}\}}   \\
+				  \end{bmatrix}\\
+    \bm{g}-E\{\bm{g}\}		&= \begin{bmatrix}
+                      		    g_{1} - m_{g_{1}} \\
+                      		    g_{2} - m_{g_{2}} \\
+                      		   \end{bmatrix}
+  \end{align*}
+  Here, we have used the usual definitions of the information coefficient and $g_{1(2)}$ and $m_{g_{1(2)}}$ is the forecast and mean of signal 1 (2) respectively. The $\rho$ represent correlations and $\sigma_{r}$ the standard deviation of the return. The inverse variance was calculated using the usual formula to invert a 2 by two matrix, and then simplified using the fact that self correlations (i.e. $\rho_{11}$) are equal to 1. Now that we have these expressions, we can determine $\bm{\phi}$ as
+  \begin{equation*}
+   \bm{\phi}=\sigma_{r}\cdot
+		\begin{bmatrix}
+		  \mathrm{IC}_{g_{1}} & \mathrm{IC}_{g_{2}} \\
+		\end{bmatrix}
+		\cdot
+		\frac{1}{1-\rho_{g_{1}g_{2}}^{2}}
+		\begin{bmatrix}
+		    1	   &	-\rho_{g_{2}g_{1}}   \\
+		   -\rho_{g_{1}g_{2}}	&	 1   \\
+		\end{bmatrix}
+		\cdot\begin{bmatrix}
+		 \frac{1}{\mathrm{Std}\{g_{1}\}}	&	0 			\\
+		 0				&	\frac{1}{\mathrm{Std}\{g_{2}\}}   \\
+		\end{bmatrix}
+		\cdot
+		\begin{bmatrix}
+                    g_{1} - m_{g_{1}} \\
+                    g_{2} - m_{g_{2}} \\
+                \end{bmatrix}\\
+  \end{equation*}
+  Multiplying the last two matrices give us the scores $z_{g_{1}}$ and $z_{g_{2}}$. Multiplying the first two matrices give us
+  \begin{equation*}
+      \begin{bmatrix}
+		  \mathrm{IC}_{g_{1}} & \mathrm{IC}_{g_{2}} \\
+		\end{bmatrix}
+		\cdot
+		\frac{1}{1-\rho_{g_{1}g_{2}}^{2}}
+		\begin{bmatrix}
+		    1	   &	-\rho_{g_{2}g_{1}}   \\
+		   -\rho_{g_{1}g_{2}}	&	 1   \\
+		\end{bmatrix}
+		=\frac{1}{1-\rho_{g_{1}g_{2}}^{2}}
+		\begin{bmatrix}
+		 \mathrm{IC}_{g_{1}} - \mathrm{IC}_{g_{2}}\rho_{g_{1}g_{2}}	&
+		 \mathrm{IC}_{g_{2}} - \mathrm{IC}_{g_{1}}\rho_{g_{2}g_{1}}\\
+		\end{bmatrix}
+  \end{equation*}
+  Multiplying the remaining matrices, we find
+  \begin{align*}
+  \bm{\phi}&=\sigma_{r}
+   \frac{1}{1-\rho_{g_{1}g_{2}}^{2}}
+   \begin{bmatrix}
+		 \mathrm{IC}_{g_{1}} - \mathrm{IC}_{g_{2}}\rho_{g_{1}g_{2}}	&
+		 \mathrm{IC}_{g_{2}} - \mathrm{IC}_{g_{1}}\rho_{g_{2}g_{1}}\\
+   \end{bmatrix}
+   \cdot
+   \begin{bmatrix}
+    z_{g_{1}} \\ z_{g_{2}}\\
+   \end{bmatrix}\\
+   &=\sigma_{r}
+   \frac{1}{1-\rho_{g_{1}g_{2}}^{2}}\left(\left[\mathrm{IC}_{g_{1}} - \mathrm{IC}_{g_{2}}\rho_{g_{1}g_{2}}\right]z_{g_{1}}+\left[\mathrm{IC}_{g_{2}} - \mathrm{IC}_{g_{1}}\rho_{g_{2}g_{1}}\right]z_{g_{2}}\right)\\
+   &=\sigma_{r}\left(IC_{g_{1}}^{*}z_{g_{1}}+IC_{g_{1}}^{*}z_{g_{2}}\right)
+  \end{align*}
+  where we have used the definitions of $\mathrm{IC}_{g_{1}}^{*}$ and $\mathrm{IC}_{g_{2}}^{*}$ from equations (10.21) and (10.22). This completes the derivation of Eq. (10.20).
 \end{proof}
 
 
 \begin{problem}{10.4}
-  In the case of two forecasts [Eq. (10.20)], what is the variance of the combined forecast? What is its covariance with the return? Verify explicitly that the combination of $g$ and $g'$ in the example leads to an IC of 0.1090. Compare this to the result from Eq. (10.23).
+  In the case of two forecasts [Eq. (10.20)], (a) what is the variance of the combined forecast? (b) What is its covariance with the return? (c) Verify explicitly that the combination of $g$ and $g'$ in the example leads to an IC of 0.1090. Compare this to the result from Eq. (10.27).
 \end{problem}
 
 \begin{proof}[Solution]
+  We can use the matrix expressions from question 10.3 to determine these properties.\\
+  \begin{enumerate}[label=(\alph*)]
+    \item{The variance of the combined forecasts will be
+      \begin{align*}
+       \sigma^{2}_{\bm{g}}&=\begin{bmatrix} 1 & 1 \end{bmatrix}\cdot \begin{bmatrix} \sigma_{g_{1}}^{2} & \sigma_{g_{1}}\sigma_{g_{2}}\rho_{1,2} \\ \sigma_{g_{1}}\sigma_{g_{2}}\rho_{1,2}	& \sigma_{g_{2}}^{2}\\ \end{bmatrix}\cdot \begin{bmatrix} 1 \\ 1 \end{bmatrix}\\
+       &=\sigma_{g_1}^{2}+\sigma_{_2}^{2}+2\sigma_{g_1}\sigma_{g_2}\rho_{1,2}
+      \end{align*}
+      where the $\sigma^2$ are the individual variances and $\rho_{1,2}$ the correlation between forecasts.}
+    \item{The covariance with the return will be
+    \begin{align*}
+    \sigma_{r,\bm{g}}&=\sigma_{r}\cdot \begin{bmatrix} \mathrm{IC}_{g_{1}} & \mathrm{IC}_{g_{2}} \\\end{bmatrix}
+				\cdot\begin{bmatrix} \sigma_{g_{1}}&0\\  0&\sigma_{g_{2}} \\ \end{bmatrix}\cdot \begin{bmatrix} 1 \\ 1 \end{bmatrix}\\
+		    &=\sigma_{r}\left( \mathrm{IC}_{g_{1}}\sigma_{g_{1}}+\mathrm{IC}_{g_{2}}\sigma_{g_{2}}\right)
+    \end{align*}
+    }
+    \item{The IC of the combined forecasts is equal to its correlation with the return
+    \begin{align*}
+     \mathrm{IC}_{\bm{g}}&=\frac{\sigma_{r,g}}{\sigma_{r}\sigma_{g}}\\
+			 &=\frac{\mathrm{IC}_{g_{1}}\sigma_{g_{1}}+\mathrm{IC}_{g_{2}}\sigma_{g_{2}}}{\sqrt{\sigma_{g_1}^{2}+\sigma_{_2}^{2}+2\sigma_{g_1}\sigma_{g_2}\rho_{1,2}}}
+    \end{align*}
+    For the example in the text, $\mathrm{IC}_{g_{1}}=0.0833$, $\mathrm{IC}_{g_{2}}=0.089$,$\sigma_{g_{1}}=4$,$\sigma_{g_{2}}=5$, and $\rho_{g_1,g_2}=
+1/4$. Plugging these values in, we find
+  \begin{align*}
+     \mathrm{IC}_{\bm{g}}&=\frac{0.0833\times4+0.089\times 5}{\sqrt{25+16+2\times 5\times4\times1/4}}\\
+			 &=0.1090
+  \end{align*}
+  We can compare this to Eq (10.27), which states
+  \begin{align*}
+   \mathrm{IC}_{\bm{g}}&=\sqrt{\frac{\mathrm{IC}_{\bm{g_{1}}}^{2}+\mathrm{IC}_{\bm{g_{2}}}^{2}-2\rho_{g_{1},g_{2}}\mathrm{IC}_{g_{1}}\mathrm{IC}_{g_{2}}}{1-\rho_{g_{1},g_{2}}^{2}}}\\
+		       &=\sqrt{\frac{0.0833^2+0.089^2-2\times1/4\times0.0833\times0.089}{1-1/16}}\\
+		       &=0.1091
+  \end{align*}
+   The difference is likely due to a rounding error in the calculation of the input terms, most likely the information coefficients.
+     }
+  \end{enumerate}
+
 \end{proof}
 
 
@@ -38,5 +190,6 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  The neural network will take the raw inputs and forecast the returns to the stock directly. Hence, it doesn't seem as if the rule of thumb [equation (10.11)] will apply since the conversion from raw signal to forecast is done behind the scenes. However, it should be straightforward to decompose the forecast of the neural network into the terms in the rule of thumb, since the volatility can be determined and a reasonable IC can be assigned.
 \end{proof}
 
