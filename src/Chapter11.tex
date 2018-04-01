@@ -1,8 +1,13 @@
 \begin{problem}{11.1}
-  Signal 1 and Signal 2 have equal IC, and both exhibit signal volatilities proportional to asset volatilities. Do the two signals receive equal weight in the forecast exceptional return?
+  Signal 1 and Signal 2 have equal IC, and both exhibit signal volatilities proportional to asset volatilities. Do the two signals receive equal weight in the forecast of exceptional return?
 \end{problem}
 
 \begin{proof}[Solution]
+  Since both signals exhibit volatilities proportional to asset volatilities, we can use equation 11.14 
+  \begin{equation*}
+   \phi_{n}=\mathrm{IC}\cdot c_{g} \cdot z_{CS,n}
+  \end{equation*}
+  to determine the refined forecast of exceptional return. We see that there are two factors that weight the forecast, IC and $c_{g}$. We know the IC are the same, but the $c_{g}$ can vary by signal. Hence, the signals do not necessilarly receive equal weight in the forecast of eceptional return.
 \end{proof}
 
 \begin{problem}{11.2}
@@ -10,6 +15,7 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  The na\"{i}ve approach is to assume that the IR of the combined strategies is equal to $\sqrt{\mathrm{IR}_{A}^{2}+\mathrm{IR}_{B}^{2}}$. However, this assumes that the strategies are uncorrelated. The actual IR, i.e. the IR associated with strategy B, will be lower than that predicted by the na\"{i}ve approach due to correlation between the strategies.
 \end{proof}
 
 \begin{problem}{11.3}
@@ -17,4 +23,11 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Assuming monthly observations, we determine the shrinkage as (see equation 11.31)
+  \begin{align*}
+   \frac{b'}{b} &=\frac{1}{1+1/(T\cdot E\{R^{2}/(1-R^{2})\})}\\
+		&=\frac{1}{1+1/(120 \times .0025/.9975)}\\
+		&=0.2312
+  \end{align*}
+  (see also table 11.4)
 \end{proof}
