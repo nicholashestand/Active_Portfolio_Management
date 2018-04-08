@@ -3,6 +3,7 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Scores tell about how the stock compares to others according to some criteria. For information analysis, we are interested in how these scores translate into returns so that we can evaluate the value in the information used to generate the scores. We can use scores to build portfolios, but we must then evaluate the performance of the portfolios to determine the value of the information. Note that most of the performance measures in this chapter (t-statistic, IC, IR) are all alpha dependent and do not depend directly on the scores. Hence, the problems in using scores instead of alphas would turn up in the performance evaluation step of the information analysis procedure.
 \end{proof}
 
 \begin{problem}{12.2}
@@ -10,6 +11,7 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  For all of the portfolios discussed, the t-statistic suggests that the results are not significant at the 95\% confidence level. This suggests that the book to price ratio is not well suited to generate excess returns, a fact that makes sense in light of the fact that the book to price ratio is a common factor used to value stocks and so portfolios built on book to price should be relatively fairly valued. There is not much opportunity using this information.
 \end{proof}
 
 \begin{problem}{12.3}
@@ -17,13 +19,20 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  In this case, our factors are just alpha and beta. If we fail to analyze the returns in terms of these factors, we might come to the wrong conclusion about the information used to construct the portfolios. For example, if the returns on the lower and upper quintiles are 10\% and 2\% relative to the benchmark, it might be tempting to say that the information used to build the lower quintile portfolio is better (has a higher IC), however this may not be the case. If the beta of the lower quintile is 1.1 and the beta of the upper quintile is 1, the alphas would be 0 and 0.02 respectively . The upper quintile thus has a higher IC even though the total return is less than the lower quintile.
 \end{proof}
 
 \begin{problem}{12.4}
-  The probability of observing a |$t$ statistic | $>$ 2, using random data, is only 5 percent. Hence our confidence in the estimate is 95 percent. Show that the probability of observing at least one |$t$ statistic | $>$ 2 with 20 regressions on independent sets of random data is 64 percent.
+  The probability of observing a $|t$ statistic $|>$ 2, using random data, is only 5 percent. Hence our confidence in the estimate is 95 percent. Show that the probability of observing at least one $|t$ statistic  $|>$ 2 with 20 regressions on independent sets of random data is 64 percent.
 \end{problem}
 
 \begin{proof}[Solution]
+  The probability of observing at least one $|t$ statistic $|>$ 2 is equal to 1 minus the probability of observing twenty $|t$ statistics $|<$ 2. Hence,
+  \begin{align*}
+   P  &= 1 - 0.95^{20}\\
+      &= 0.64
+  \end{align*}
+
 \end{proof}
 
 \begin{problem}{12.5}
@@ -31,6 +40,16 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  We can estimate the mean information ratio using data over a period of $T$ years as
+  \begin{equation*}
+   \mathrm{\bar{IR}} = \frac{1}{T}\sum_{t=1,T}\frac{\alpha_{t}}{\omega_{t}}
+  \end{equation*}
+  Assuming we can measure all $\alpha_{t}$ and $\omega_{t}$ with perfect accuracy, the standard error will simply be
+  \begin{equation*}
+   \mathrm{SE\{\bar{IR}\}}=\frac{\mathrm{\bar{IR}}}{\sqrt{T}}
+  \end{equation*}
+  since we have $T$ samples.
+  
 \end{proof}
 
 \begin{problem}{12.6}
@@ -38,18 +57,63 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  An event study would be more appropriate for this type of analysis since the transactions will occur at different times for different companies. The information concerning these events will not arrive in the regular intervals that are needed for cross sectional analysis. Some conditioning variables to consider would be:
+  \begin{itemize}
+   \item{Has there been a change in leadership? Insider stock transactions may signal the perception of the new leadership.}
+   \item{Is the company planning to release or discontinue a product? Insider transactions may reveal how this move will be perceived by the public.}
+   \item{Are insiders buying or selling? Could indicate perceived future value of the company.}
+  \end{itemize}
+
 \end{proof}
 
 \begin{problem}{12.7}
-  Haugen and Baker (1996) have proposed an APT model in which expected factor returns are simply based on past 12-month moving averages. Applying this idea to the BARRA U.S. Equity model from January 1974 through March 1996 leads to an information ratio of 1.79. Applying this idea only to the risk induces in the model (using consensus expected returns for industries) leads to an information ratio of 1.26. What information ratio would you expect to find from applying this model to industries only? If the full application exhibits an information coefficient of 0.05, what is the implied breadth of the strategy?
+  Haugen and Baker (1996) have proposed an APT model in which expected factor returns are simply based on past 12-month moving averages. Applying this idea to the BARRA U.S. Equity model from January 1974 through March 1996 leads to an information ratio of 1.79. Applying this idea only to the risk indices in the model (using consensus expected returns for industries) leads to an information ratio of 1.26. (a) What information ratio would you expect to find from applying this model to industries only? (b) If the full application exhibits an information coefficient of 0.05, what is the implied breadth of the strategy?
 \end{problem}
 
 \begin{proof}[Solution]
+  \quad\\
+  \begin{enumerate}[label=(\alph*)]
+    \item{When consensus expected returns are used for the industry factor returns, the information ratio decreases by 0.53. Since the full model is used to calculate the residual risk in both cases, this translates decrease in $\alpha$ by 0.53/$\omega$. Hence, the industry factor returns in the model contribute 0.53 to the IR, assuming the full model is always applied to calculate the risk indices. When the model is applied only to industries, the IR will therefore be 0.53.}
+    \item{We know that $\mathrm{IR}=\mathrm{IC}\sqrt{\mathrm{BR}}$. Hence, given an IR of 1.79 for the full model and an IC of 0.05, the breadth is
+    \begin{align*}
+     \mathrm{BR}&=\left(\frac{1.79}{0.05}\right)^{2}\\
+		&=1282
+    \end{align*}}
+  \end{enumerate}  
 \end{proof}
 
 \begin{problem}{12.8}
-  A current get-rich-quick Web site guarantees that over the next 3 months, at least three stocks mentioned on the site will exhibit annualized returns of at least 300 percent. Assuming that all stock returns are independent, normally distributed, and with expected annual returns of 12 percent and risk of 35 percent, (a) what is the probability that over one quarter at last 3 stocks out of 500 exhibit annualized returns of at least 300\%? (b) How many stocks must the Web site include for this probability to be 50 percent? (c) Identify at least two real-world deviations from the above assumptions, and discuss how they would affect the calculated probabilities.
+  A current get-rich-quick Web site guarantees that over the next 3 months, at least three stocks mentioned on the site will exhibit annualized returns of at least 300 percent. Assuming that all stock returns are independent, normally distributed, and with expected annual returns of 12 percent and risk of 35 percent, (a) what is the probability that over one quarter at least 3 stocks out of 500 exhibit annualized returns of at least 300\%? (b) How many stocks must the Web site include for this probability to be 50 percent? (c) Identify at least two real-world deviations from the above assumptions, and discuss how they would affect the calculated probabilities.
 \end{problem}
 
 \begin{proof}[Solution]
+  \quad\\
+  \begin{enumerate}[label=(\alph*)]
+   \item{For a given quarter, the risk is $\sigma=0.35/\sqrt{4}=0.175$. For a 3 month period, we are thus working with a normal distribution having a mean of 0.12 and a standard deviation 0.175. The probability that a single stock exhibits an annualized return of at least 300\%  in a given quarter (corresponding to a quarterly return of 75\%) can be determined from the cumulative distribution function of the normal distribution as
+   \begin{align*}
+     P(x\ge 0.75) &= 1 - P(x<0.75) \\
+	       &= 1 - \frac{1}{2}\left[ 1 + \mathrm{erf}\left(\frac{0.75-0.12}{0.175\sqrt{2}}\right)\right]\\
+	       &= 0.00016
+   \end{align*}
+    The probability that at least 3 stocks out of 500 exhibit annualized returns of at least 300\% is
+    \begin{align*}
+     P(y\ge 3) &= 1 - P(y=0) - P(y=1) - P(y=2)\\
+	       &= 1 - P(x<0.75)^{500} - P(x<0.75)^{499}P(x>=0.75) - P(x<0.75)^{499}P(x>=0.75)^{2}\\
+	       &= 1 - 0.9235 - 0.000147 - 0.0000000233 \\
+	       &= 0.0763
+    \end{align*}
+    So there is only about a 7.5\% probability that at least three of 500 stocks will exhibit an annualized return of at least 300\% in a given quarter.
+}
+  \item{To find the number of stocks necessary so that the probability of at least three stocks exhibit annualized returns of 300\% in a given quarter is 50 percent, we have to solve the equation
+  \begin{align*}
+   P(y\ge 3|N)  &= 0.5\\
+		&= 1 - \sum_{n=0}^{2}P(y=n|N)\\
+		&= 1 - \sum_{n=0}^{2}P(x<0.75)^{N-n}P(x>=0.75)^{n}
+  \end{align*}
+  for $N$. Using numerical software, we find $N=4357$ gives a probability of 50\%.
+  }
+  \item{One exception to the assumptions mentioned above is that the returns are correlated and not independent. Another exception is that the stocks are not normally distributed. Depending on the correlations and distributions in the real world, the probabilities discussed above could change dramatically. For example, if the stocks had a bimodal distribution of winners and losers where winners had an annualized return of 312 \% and the losers had an annualized return of 288 \% (to keep the mean return at 12 \%), the probability that a single stock exhibits an annualized return of at least 300 \% could be near 50 \%.}
+  \end{enumerate}
+  
+
 \end{proof}
