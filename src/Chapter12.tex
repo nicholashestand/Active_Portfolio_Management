@@ -98,19 +98,20 @@
     The probability that at least 3 stocks out of 500 exhibit annualized returns of at least 300\% is
     \begin{align*}
      P(y\ge 3) &= 1 - P(y=0) - P(y=1) - P(y=2)\\
-	       &= 1 - P(x<0.75)^{500} - P(x<0.75)^{499}P(x>=0.75) - P(x<0.75)^{499}P(x>=0.75)^{2}\\
-	       &= 1 - 0.9235 - 0.000147 - 0.0000000233 \\
-	       &= 0.0763
+	       &= 1 - {500 \choose 0}P(x<0.75)^{500} - {500 \choose 1}P(x<0.75)^{499}P(x>=0.75) \\
+	       & \qquad - {500 \choose 2}P(x<0.75)^{499}P(x>=0.75)^{2}\\
+	       &= 1 - 0.9235 - 0.07348 - .00292 \\
+	       &= 0.786\times 10^{-4}
     \end{align*}
-    So there is only about a 7.5\% probability that at least three of 500 stocks will exhibit an annualized return of at least 300\% in a given quarter.
+    So the probability that at least three of 500 stocks will exhibit an annualized return of at least 300\% in a given quarter is extreemly small.
 }
   \item{To find the number of stocks necessary so that the probability of at least three stocks exhibit annualized returns of 300\% in a given quarter is 50 percent, we have to solve the equation
   \begin{align*}
    P(y\ge 3|N)  &= 0.5\\
 		&= 1 - \sum_{n=0}^{2}P(y=n|N)\\
-		&= 1 - \sum_{n=0}^{2}P(x<0.75)^{N-n}P(x>=0.75)^{n}
+		&= 1 - \sum_{n=0}^{2}{500 \choose n}P(x<0.75)^{N-n}P(x>=0.75)^{n}
   \end{align*}
-  for $N$. Using numerical software, we find $N=4357$ gives a probability of 50\%.
+  for $N$. Using numerical software, we find $N=16806$ gives a probability of 50\%.
   }
   \item{One exception to the assumptions mentioned above is that the returns are correlated and not independent. Another exception is that the stocks are not normally distributed. Depending on the correlations and distributions in the real world, the probabilities discussed above could change dramatically. For example, if the stocks had a bimodal distribution of winners and losers where winners had an annualized return of 312 \% and the losers had an annualized return of 288 \% (to keep the mean return at 12 \%), the probability that a single stock exhibits an annualized return of at least 300 \% could be near 50 \%.}
   \end{enumerate}
