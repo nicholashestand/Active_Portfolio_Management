@@ -1,9 +1,9 @@
 \begin{problem}{14.1}
-  Table 14.1 shows both alphas used in a constrained optimization and the modified alphas which, in an unconstrained optimization, lead to the same holdings. Comparing these two sets of alphas can help in estimating the loss in value added caused by the constraints. How? What is the loss in this example? The next chapter will discuss this in more detail
+  Table 14.1 shows both alphas used in a constrained optimization and the modified alphas which, in an unconstrained optimization, lead to the same holdings. Comparing these two sets of alphas can help in estimating the loss in value added caused by the constraints. How? What is the loss in this example? The next chapter will discuss this in more detail.
 \end{problem}
-  % IR = alpha /omega, VA \propto IR^{2}
 
 \begin{proof}[Solution]
+  We know that value added is proportional to the square of the information ratio (eq 5.12). We also know that the information ratio is proportional to the information coefficient (eq 6.1). As discussed in the text, the standard deviation of the constrained and unconstrained alphas, 0.57 and 2 percent respectively, imply a reduction in IC by 62 \% for the constrained problem, according to reasoning from the forecasting rule of thumb. Since value added changes as the square of the IC, this implies a value loss of approximately 62\% ($=1\times 1-.62\times.62$) due to the constraints. 
 \end{proof}
 
 \begin{problem}{14.2}
@@ -11,6 +11,7 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Restrictions on short sales act as a constraint on the manager. As shown in problem 14.1, constraints lead to an effective reduction in the information coefficient and hence, the manager cannot use his information in the most effective way possible. At the same time, if the manager has poor information, the restriction on short sales will limit the transactions he makes with this poor information, thus acting as a safeguard.
 \end{proof}
 
 \begin{problem}{14.3}
@@ -18,6 +19,7 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  There could be industry and size biases in her alphas since PE ratios can depend on these factors. Lisa will want to make her alphas neutral to these factors before constructing her portfolio in order to bet only on the specific returns for each stock. One simple way to do this would be to calculate the capitalization weighted alpha for each industry and for companies of a given size, and then subtract these industry and size alphas from the PE alphas based on the exposure of the specific stock to these factors.
 \end{proof}
 
 \begin{problem}{14.4}
@@ -25,6 +27,13 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  See figure 14.2. If the benchmark volatility turns out to be 17 percent, the percentage of value lost due to our forecast of 14 \% is about 20\%. This means that we will only be able to add about 40 basis points of risk-adjusted value. We can also calculate the loss according to equation 14.11 as
+  \begin{align*}
+   \mathrm{Loss} &= \mathrm{VA}^{*}\cdot \left[ 1 - \left(\frac{\zeta}{\sigma}\right)^{2}\right]^{2}\\
+		 &= 50 \cdot \left[ 1  -\left(\frac{17}{14}\right)^{2}\right]^{2}\\
+		 &= 11.26\\
+  \end{align*}
+  so that the value we can add is $50-11.26=38.74$ basis points, pretty close to our estimate based on the graph.
 \end{proof}
 
 \begin{problem}{14.5}
@@ -32,4 +41,14 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  We can calculate the expected dispersion according to equation 14.13
+  \begin{equation*}
+   D=2\cdot\Phi^{-1} \left\{\left(\frac{1}{2}\right)^{1/N}\right\}  \cdot \psi
+  \end{equation*}
+  Where $\Phi^{-1}(p)$ is the inverse normal CDF ($=\sqrt{2}\cdot\mathrm{erf}^{-1}(2p-1)$), $N$ is the total number of portfolios managed, and $\psi$ is the average tracking error of each portfolio relative to the composite. From the problem, we know $N=20$ and hence
+  \begin{align*}
+   D&=2\cdot\sqrt{2}\cdot\mathrm{erf}^{-1}\left\{2\left(\frac{1}{2}\right)^{1/20}-1\right\}\cdot \psi\\
+    &=3.648 \cdot \psi
+  \end{align*}
+  Assuming, as in the text, that each stock has a risk of 20\%, that the portfolios have equal weight of their constituent stocks and that the individual stocks are uncorrelated, leads to a tracking error for each portfolio of about $\sqrt{0.20}\%$ (since each portfolio has 10 out of 100 unique stocks and each unique stock contributes 0.2\% to the total variance). This leads to a dispersion of 1.63\% which agrees well with the results plotted in figure 14.3.
 \end{proof}
