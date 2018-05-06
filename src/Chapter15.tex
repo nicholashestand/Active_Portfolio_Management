@@ -3,13 +3,28 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  Long/short strategies offer the most upside when the universe of assets is large, the asset volatility is low and the strategy has high active risk. Since Jill manages a technology sector fund, this implies that her universe is limited. On the other hand, Joe's fund implies a large universe and low asset volatility. Hence, it seems as if Joe should experience a larger boost in his IR by implementing a long/short strategy. If Jill implemented a long/short strategy, she would come out ahead when the technology sector asset volatility was low and when her long/short portfolio had high active risk. If Joe implemented a long/short strategy, he would come out ahead when his portfolio has a high active risk.
 \end{proof}
 
 \begin{problem}{15.2}
-  You have a strategy with an information ratio of 0.5, following 250 stocks. You invest long-only, with active risk of 4 percent. Approximately what alpha should you expect? Convert this to the shrinkage in skill (measured by the information coefficient) induced by the long-only constraint).
+  You have a strategy with an information ratio of 0.5, following 250 stocks. You invest long-only, with active risk of 4 percent. Approximately what alpha should you expect? Convert this to the shrinkage in skill (measured by the information coefficient) induced by the long-only constraint.
 \end{problem}
 
 \begin{proof}[Solution]
+  From equation (15.11), we know that $\alpha$ can be approximated as
+  \begin{align*}
+   \alpha(\omega,N) &= 100\cdot \mathrm{IR} \cdot \left\{ \frac{ \left\{ 1 + \omega/100 \right\}^{1-\gamma(N)} -1}{1-\gamma(N)}\right\}\\
+		    &= 100 \cdot 0.5 \cdot \left\{ \frac{ \left\{ 1 + 4/100 \right\}^{1-(53+250)^{0.57}} -1}{1-(53+250)^{0.57}}\right\}\\
+		    &= 1.25 \%\\
+  \end{align*}
+  The shrinkage is given by equation (15.13) as
+  \begin{align*}
+   S  &= \frac{\alpha(\omega,N)/\omega}{\mathrm{IR}} \\
+      &= \frac{1.25 \%}{4\%\times 0.5} \\
+      &= 0.625
+  \end{align*}
+  This is a substantial shrinkage factor!
+
 \end{proof}
 
 \begin{problem}{15.3}
@@ -17,5 +32,6 @@
 \end{problem}
 
 \begin{proof}[Solution]
+  In this chapter we laired that the long-only constraint induces a negative size bias (a bias towards smaller companies). This bias could be mitigated by constraining the portfolio to have zero net exposure to size.
 \end{proof}
 
