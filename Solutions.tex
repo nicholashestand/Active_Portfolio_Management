@@ -8,16 +8,23 @@
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 \renewcommand{\qedsymbol}{}
 
+\newcommand{\cov}[1]{\mathrm{Cov}\{#1\}}
+\newcommand{\var}[1]{\mathrm{Var}\{#1\}}
+
+  \title{Solutions for \emph{Active Portfolio Management} by Grinold and Kahn}
+  \author{Nicholas J. Hestand \& Nicholas J. Williams}
+  \date{\today}
 
 \begin{document}
-  \title{Solutions for Active Portfolio Management}
-  \author{Nicholas J. Hestand}
-  \date{\today}
   
   \maketitle
   
   \section*{Chapter 2}
   \subfile{src/Chapter2}
+  
+  \newpage
+  \section*{Chapter 2 technical appendix}
+  \subfile{src/Chapter2app}
   
   \newpage
   \section*{Chapter 3}
@@ -54,7 +61,7 @@
   \newpage
   \section*{Chapter11}
   \subfile{src/Chapter11}
-  
+	  
   \newpage
   \section*{Chapter12}
   \subfile{src/Chapter12}
