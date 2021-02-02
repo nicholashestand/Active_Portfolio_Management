@@ -1,0 +1,135 @@
+
+\begin{problem}{3a.1}
+Show that:
+\begin{align*}
+\mathbf{h}^{T}_{P} \cdot \mathbf{MCTR} &= \sigma_{P}\\
+\mathbf{h}^{T}_{P} \cdot \mathbf{MCRR} &= \omega_{P}\\
+\mathbf{h}^{T}_{PA} \cdot \mathbf{MCAR} &= \psi_{P}
+\end{align*}
+\end{problem}
+
+\begin{proof}[Solution]
+We show each in turn.
+\begin{align*}
+\mathbf{h}^{T}_{P} \cdot \mathbf{MCTR} &= \frac{\mathbf{h}_{P}^{T}\mathbf{V}\mathbf{h}_{P}}{\sigma_{P}} & (3A.20)\\
+&= \frac{\sigma_{P}^{2}}{\sigma}\\
+&= \sigma_{P}.\\
+\mathbf{h}_{P}^{T} \cdot \mathbf{MCRR} &= \frac{\mathbf{h}_{P}^{T}\mathbf{V}\mathbf{h}_{PR}}{\omega_{P}} & (3A.22)\\
+&= \frac{\mathbf{h}_{P}^{T}\mathbf{V}\mathbf{h}_{P} - \mathbf{h}_{P}^{T}\mathbf{V}\mathbf{h}_{B}}{\omega_{P}} \\
+&= \frac{\sigma_{P}^{2} - \beta_{P}\sigma_{B}^{2}}{\omega_{P}} &(2.1)\\
+&= \frac{\omega_{P}^{2}}{\omega_{P}} & (3.8)\\
+&= \omega_{P}.\\
+\mathbf{h}_{PA}^{T} \cdot \mathbf{MCAR} &= \frac{\mathbf{h}_{PA}^{T}\mathbf{V}\mathbf{h}_{PA}}{\psi_{P}} & (3A.23)\\
+&= \frac{\psi_{P}^{2}}{\psi_{P}} & (3A.12)\\
+&= \psi_{P}.
+\end{align*}
+Note that most of the steps of the final derivation are carried out at (3A.31).
+\end{proof}
+
+
+\begin{problem}{3a.2}
+Verify Eq. (3A.24)
+\end{problem}
+
+\begin{proof}[Solution]
+Eq. (3A.24) states that \[\mathbf{MCAR} = \bm{\beta}k_{1} + \mathbf{MCRR}k_{2}\] where \[k_{1} = \frac{\beta_{PA}\sigma_{B}^{2}}{\psi_{P}}\] and \[k_{2} = \frac{\omega_{P}}{\psi_{P}}.\] We can derive this as follows.
+\begin{align*}
+\bm{\beta}\frac{\beta_{PA}\sigma_{B}^{2}}{\psi_{P}} + \frac{\mathbf{V}\mathbf{h}_{PR}}{\omega_{P}}\frac{\omega_{P}}{\psi_{P}} &= \frac{1}{\psi_{P}}\left( \frac{\mathbf{V}\mathbf{h}_{B}}{\sigma_{B}^{2}}\beta_{PA}\sigma_{B}^{2} + \mathbf{V}\mathbf{h}_{PR} \right)\\
+&= \frac{1}{\psi_{P}} (\beta_{PA}\mathbf{V}\mathbf{h}_{B} + \mathbf{V}\mathbf{h}_{PR})\\
+&= \frac{1}{\psi_{P}}(\beta_{PA}\mathbf{V}\mathbf{h}_{B} + \mathbf{V}(\mathbf{h}_{P} - \beta_{P}\mathbf{h}_{B}))\\
+&= \frac{1}{\psi_{P}}((\beta_{PA} - \beta_{P})\mathbf{V}\mathbf{h}_{B} + \mathbf{V}\mathbf{h}_{P})\\
+&= \frac{1}{\psi_{P}}(-\mathbf{V}\mathbf{h}_{B} + \mathbf{V}\mathbf{h}_{P})\\
+&= \frac{\mathbf{V}(\mathbf{h}_{P} - \mathbf{h}_{B})}{\psi_{P}}\\
+&= \frac{\mathbf{V}\mathbf{h}_{PA}}{\psi_{P}}\\
+&= \mathbf{MCAR}.
+\end{align*}
+\end{proof}
+
+
+\begin{problem}{3a.3}
+Show that
+\begin{align*}
+\mathbf{h}_{B}^{T} \cdot \mathbf{MCRR} &= 0 \\
+\mathbf{h}_{B}^{T} \cdot \mathbf{MCAR} &= k_{1}.
+\end{align*}
+\end{problem}
+
+\begin{proof}[Solution]
+We derive these two identities in turn.
+\begin{align*}
+\mathbf{h}_{B}^{T} \cdot \mathbf{MCRR} &= \frac{\mathbf{h}_{B}^{T}\mathbf{V}\mathbf{h}_{PR}}{\omega_{P}} \\
+&= \frac{\mathbf{h}_{B}^{T}\mathbf{V}(\mathbf{h}_{P} - \beta_{P}\mathbf{h}_{P})}{\omega_{P}} \\
+&= \frac{\mathbf{h}_{B}^{T}\mathbf{V}\mathbf{h}_{P}^{T} - \beta_{P}\mathbf{h}_{B}^{T}\mathbf{V}\mathbf{h}_{B}}{\omega_{P}}\\
+&= \frac{\mathbf{h}_{B}^{T}\mathbf{V}\mathbf{h}_{P} - \mathbf{h}_{B}^{T}\mathbf{V}\mathbf{h}_{P}}{\omega_{P}}\\
+&= 0. \\
+\mathbf{h}_{P}^{T} \cdot \mathbf{MCAR} &= \frac{\mathbf{h}_{B}^{T}\mathbf{V}\mathbf{h}_{PA}}{\psi_{P}}\\
+&= \frac{\frac{\mathbf{h}_{B}^{T}\mathbf{V}\mathbf{h}_{PA}}{\sigma_{B}^{2}}\sigma_{B}^{2}}{\psi_{P}}\\
+&= \frac{\beta_{PA}\sigma_{B}^{2}}{\psi_{P}}\\
+&= k_{1}.
+\end{align*}
+\end{proof}
+
+
+\begin{problem}{3a.4}
+Using the single-factor model, assuming that every stock has equal residual risk $\omega_{0}$, and considering equal-weighted portfolios to track the equal-weighted S\&P 500, show that the residual risk of the $N$-stock portfolio will be \[\omega_{N}^{2} = \frac{\omega_{0}^{2}}{N}.\] What estimate does this provide of how well a 50-stock portfolio could track the S\&P 500? Assume
+$\omega_{0}$ = 25 percent.
+\end{problem}
+
+\begin{proof}[Solution]
+Let $r_{N}$ be the random variable of the excess return of the $N$-stock portfolio, so that $r_{N} = \frac{1}{N}\sum_{i = 1}^{N}r_{iN}$, where $r_{iN}$ are the random variables for the excess returns of the individual stocks in the portfolio. We then have
+\begin{align*}
+\sigma_{N}^{2} &:= \var{r_{N}}\\
+&= \cov{\frac{1}{N}\sum_{i=1}^{N}r_{iN}, \frac{1}{N}\sum_{i=1}^{N}r_{iN}}\\
+&= \frac{1}{N^{2}}\sum_{i=1}^{N}\var{r_{iN}} + \frac{1}{N^{2}}\sum_{i \neq j}\cov{r_{iN}, r_{jN}}.
+\end{align*}
+We let $\sigma_{B}^{2}$ be the variance of the S\&P 500. By the single factor model ((3.12) and (3.13)), and since we assume that every stock has equal residual risk $\omega_{0}$, we have that
+\begin{align*}
+\sigma_{iN}^{2} := \var{r_{iN}} &= \beta_{iN}\sigma_{B}^{2} + \omega_{0}^{2} \\
+\cov{r_{iN},r_{jN}} &= \beta_{iN}\beta_{jN}\sigma_{B}^{2},
+\end{align*}
+where $\beta_{iN}, \beta_{jN}$ are the respective betas of the stocks with respect to the S\&P 500. Since we assume equal-weighted portfolios to track the equal weighted S\&P 500, we can assume that $\beta_{iN} = 1$ for all $i$. We then continue to reason
+\begin{align*}
+\sigma_{N}^{2} &= \frac{1}{N^{2}}\sum_{i=1}^{N}\sigma_{0}^{2} + \frac{1}{N^2}\sum_{i \neq j}\sigma_{B}^{2}\\
+&= \frac{1}{N^{2}}N\sigma_{0}^{2} + \frac{1}{N^{2}}N(N-1)\sigma_{B}^{2}\\
+&= \frac{1}{N}(\sigma_{B}^{2} + \omega_{0}^{2}) + \frac{N - 1}{N}\sigma_{B}^{2}\\
+&= \sigma_{B}^{2} + \frac{\omega_{0}^{2}}{N}.
+\end{align*} 
+It is then clear from the single-factor model applied to the $N$-stock portfolio that $\omega_{N}^{2} = \frac{\omega_{0}^{2}}{N}$.
+
+The measure of how well an $N$-stock portfolio could track the S\&P 500 is the tracking error $\psi_{N}$, where
+\begin{align*}
+\psi_{N}^{2} &= \var{r_{N} - r_{B}}\\
+&= \sigma_{N}^{2} + \sigma_{B}^{2} - 2\cov{r_{N},r_{B}}\\
+&= \sigma_{N}^{2} + \sigma_{B}^{2} - 2\beta_{N}\sigma_{B}^{2}.
+\end{align*}
+Since we are assuming $\beta_{N} = 1$, we conclude that $\psi_{N}^{2} = \sigma_{N}^{2} - \sigma_{B}^{2} = \omega_{N}^{2}$. Hence, by the previous part of the question, we deduce that
+\begin{align*}
+\psi_{50} &= \sqrt{\frac{\omega_{0}^{2}}{50}}\%\\
+&= \frac{25}{\sqrt{50}}\%\\
+&= 3.54\%.
+\end{align*}
+This is our estimate of how well a 50-stock portfolio could track the S\&P 500.
+\end{proof}
+
+
+\begin{problem}{3a.5}
+This is for prime-time players. Show that the inverse of $\mathbf{V}$ is given by \[\mathbf{V}^{-1} = \bm{\Delta}^{-1} - \bm{\Delta}^{-1} \cdot X \cdot (\mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} + \mathbf{F}^{-1})^{-1} \cdot \mathbf{X}^{T} \cdot \bm{\Delta}^{-1}.\] As we will see in later chapters, portfolio construction problems typically involve inverting the
+covariance matrix. This useful relationship facilitates that computation by replacing the inversion of an $N$ by $N$ matrix with the inversion of $K$ by $K$ matrices, where $K \ll N$. Note that the inversion of $N$ by $N$ diagonal matrices is trivial.
+\end{problem}
+
+\begin{proof}[Solution]
+We first use (3A.2), which says that $\mathbf{V} = \mathbf{X} \cdot \mathbf{F} \cdot \mathbf{X}^{T} + \bm{\Delta}$. We denote the $N$ by $N$ identity matrix by $\mathbf{I}$. Hence,
+\begin{align*}
+\mathbf{V}&\left(\bm{\Delta}^{-1} - \bm{\Delta}^{-1} \cdot \mathbf{X} \cdot (\mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} + \mathbf{F}^{-1})^{-1} \cdot \mathbf{X}^{T} \cdot \bm{\Delta}^{-1}\right) \\ 
+&= \left(\mathbf{X} \cdot \mathbf{F} \cdot \mathbf{X}^{T} + \bm{\Delta}\right)\left(\bm{\Delta}^{-1} - \bm{\Delta}^{-1} \cdot \mathbf{X} \cdot (\mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} + \mathbf{F}^{-1})^{-1} \cdot \mathbf{X}^{T} \cdot \bm{\Delta}^{-1}\right) \\
+&= \mathbf{X} \cdot \mathbf{F} \cdot \mathbf{X}^{T} \cdot \bm{\Delta}^{-1} - \mathbf{X} \cdot \mathbf{F} \cdot \mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} \cdot  \left( \mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} + \mathbf{F}^{-1} \right)^{-1} \cdot \mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \\
+& \quad + \mathbf{I} - \mathbf{X} \cdot \left( \mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} + \mathbf{F}^{-1} \right)^{-1} \cdot \mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \\
+&= \mathbf{I} + \mathbf{X} \cdot \left[ \mathbf{F} - \mathbf{F} \cdot \mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} \cdot \left( \mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} + \mathbf{F}^{-1} \right)^{-1} - \left( \mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} + \mathbf{F}^{-1} \right)^{-1}  \right] \cdot \mathbf{X}^{T} \cdot \bm{\Delta}^{-1}\\
+&= \mathbf{I} + \mathbf{X} \cdot \mathbf{F} \cdot \left[\mathbf{I} - \mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} \cdot \left( \mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} + \mathbf{F}^{-1} \right)^{-1} - \mathbf{F}^{-1} \left( \mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} + \mathbf{F}^{-1} \right)^{-1} \right] \cdot \mathbf{X}^{T} \cdot \bm{\Delta}^{-1}\\
+&= \mathbf{I} + \mathbf{X} \cdot \mathbf{F} \cdot \left[\mathbf{I} - \left( \mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} + \mathbf{F}^{-1} \right)\left( \mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} + \mathbf{F}^{-1} \right)^{-1} \right] \cdot \mathbf{X}^{T} \cdot \bm{\Delta}^{-1}\\
+&= \mathbf{I} - \mathbf{X} \cdot \mathbf{F} \cdot (\mathbf{I} - \mathbf{I})\mathbf{X}^{T}\bm{\Delta}^{-1}\\
+&= \mathbf{I}.
+\end{align*}
+Showing that \[\left(\bm{\Delta}^{-1} - \bm{\Delta}^{-1} \cdot \mathbf{X} \cdot (\mathbf{X}^{T} \cdot \bm{\Delta}^{-1} \cdot \mathbf{X} + \mathbf{F}^{-1})^{-1} \cdot \mathbf{X}^{T} \cdot \bm{\Delta}^{-1}\right)\mathbf{V} = \mathbf{I}\] is symmetrical.
+\end{proof}
+
