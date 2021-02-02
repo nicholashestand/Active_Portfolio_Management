@@ -20,7 +20,7 @@
 			    &=0.02045\\
 	\end{align*}
 	}
-  \item{The consensus expected return is just $\beta_{McDonald's\cdot\mu_{B}}=6.42\%$}
+  \item{The consensus expected return is just $\beta_{McDonald's}\cdot\mu_{B}=6.42\%$}
   \item{The expected excess return is $f_{McDonald's}=E\{R_{McDonald's}\}-1-i_{F}=1.15-1-0.06=0.09$ or 9 percent}
   \item{The exceptional expected return is $f_{McDonald's}-\beta_{McDonald's}\mu_{B}=0.09-0.0642=0.0258$ or 2.58 percent.}
   \item{The sum of the consensus expected return and the exceptional return is $6.42\% + 2.58\%=9\%$ which is the expected excess return.}
@@ -32,11 +32,21 @@
 \end{problem}
 
 \begin{proof}[Solution]
- The CAPM expected returns of stock $n$ are equal to $\beta_{n}^{M}\mu_{M}$ where $\mu_{M}$ is the expected excess return of the market. Using eq (4.7), we can set 
+ The CAPM expected excess returns of stock $n$ are equal to $\beta_{n}^{M}\mu_{M}$ where $\mu_{M}$ is the expected excess return of the market. Using eq (4.7), we can set 
  \begin{equation*}
-  E\{R_{n}\}=1+i_{F}+\beta_{n}^{M}\mu_{M}=1+i_{F}+\beta_{n}^{B}\mu_{B}+\beta_{n}^{B}\Delta f_{B}+\alpha_{n}
+  E\{R_{n}\}=1+i_{F}+\beta_{n}^{M}\mu_{M}=1+i_{F}+\beta_{n}^{B}\mu_{B}+\beta_{n}^{B}\Delta f_{B}+\alpha_{n}.
  \end{equation*}
- The time premium will still be equal to $i_{F}$. The risk premium will be $\beta_{n}^{B}\mu_{B}=\beta_{n}^{M}\mu_{M}-\beta_{n}^{B}\Delta f_{B}-\alpha_{n}$. The exceptional benchmark return will be $\beta_{n}^{B}\Delta f_{B}=\beta_{n}^{M}\mu_{M}-\beta_{n}^{B}\mu_{B}-\alpha_{n}$. Alpha will be $\alpha_{n}=\beta_{n}^{M}\mu_{M}-\beta_{n}^{B}\mu_{B}-\beta_{n}^{B}\Delta f_{B}$. The consensus expected return will be $\beta_{n}^{B}\mu_{B}=\beta_{n}^{M}\mu_{M}-\beta_{n}^{B}\Delta f_{B}-\alpha_{n}$. The expected excess return will just be $\beta_{n}^{M}\mu_{M}=\beta_{n}^{B}\mu_{B}+\beta_{n}^{B}\Delta f_{B}+\alpha_{n}$. The exceptional expected return will be $\beta_{n}^{M}\mu_{M}-\beta_{n}^{B}\mu_{B}=\beta_{n}^{B}\Delta f_{B}+\alpha_{n}$. Here the superscripts indicate the market (M) and benchmark (B). For example $\beta_{n}^{B}$ is the beta of stock $n$ with respect to the benchmark while $\beta_{n}^{M}$ is the beta with respect to the market.
+ Here the superscripts indicate the market (M) and benchmark (B). For example $\beta_{n}^{B}$ is the beta of stock $n$ with respect to the benchmark while $\beta_{n}^{M}$ is the beta with respect to the market.
+ 
+ If we suppose that the CAPM holds and that the benchmark is not the market, then we have $\mu_{B} = \beta_{B}^{M}\mu_{M}$. We also have that $\Delta f_{B} = 0$, since the near future expected benchmark return $f_{B}$ is also equal to $\beta_{B}^{M}\mu_{M}$. Hence \[E\{R_{n}\}=1+i_{F}+\beta_{n}^{M}\mu_{M}=1+i_{F}+\beta_{n}^{B}\beta_{B}^{M}\mu_{M}+\alpha_{n}.\] Therefore, the CAPM expected returns will split as follows into the categories suggested in this chapter.
+\begin{itemize}
+\item The time premium will still be equal to $i_{F}$.
+\item The risk premium will equal $\beta_{n}^{B}\beta_{B}^{M}\mu_{M}$, which is also equal to the consensus expected return.
+\item The exceptional benchmark return will be zero.
+\item Alpha will be $(\beta_{B}^{M} - \beta_{n}^{B}\beta_{B}^{M})\mu_{M}$.
+\item The expected excess return will be $\beta_{n}^{M}\mu_{M}$.
+\item The exceptional expected return will be equal to the alpha, $(\beta_{B}^{M} - \beta_{n}^{B}\beta_{B}^{M})\mu_{M}$.
+\end{itemize}
 \end{proof}
 
 \begin{problem}{4.3}
