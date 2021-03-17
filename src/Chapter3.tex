@@ -16,7 +16,7 @@
 
 
 \begin{problem}{3.2}
- Stock A has 25 percent risk stock B has 50 percent risk, an their returns are 50 percent correlated. What fully invested portfolio of A and B has minimum total risk? (\textit{Hint} try solving graphically (e.g. in Excel), if you cannot determine the answer mathematically.)
+ Stock A has 25 percent risk, stock B has 50 percent risk, and their returns are 50 percent correlated. What fully invested portfolio of A and B has minimum total risk? (\textit{Hint} try solving graphically (e.g. in Excel), if you cannot determine the answer mathematically.)
 \end{problem}
 
 \begin{proof}[Solution]
@@ -42,11 +42,61 @@
  Plugging in the values, we have
  \begin{align*}
     f_{A}&=\frac{2(0.25)-2(0.5)(0.25)(0.5)}{2(0.0625)+2(0.25)-4(0.5)(0.25)(0.5)}\\
-         &=\frac{0.375}{0.375}
+         &=\frac{0.375}{0.375}\\
          &=1
  \end{align*}
  Hence, the portfolio with minimum risk will hold 100\% stock A.
 
+\end{proof}
+
+\begin{proof}[Solution (NJW)]
+One can also solve this problem using Lagrange multipliers. The covariance matrix for stock A and stock B is 
+\begin{align*}
+\begin{pmatrix}
+\sigma_{A}^{2} & \cov{r_{A}, r_{B}} \\
+\cov{r_{A}, r_{B}} & \sigma_{A}^{2}
+\end{pmatrix}
+&=
+\begin{pmatrix}
+\sigma_{A}^{2} & \rho_{AB}\sigma_{A}\sigma_{B} \\
+\rho_{AB}\sigma_{A}\sigma_{B} & \sigma_{A}^{2}
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+25^{2} & 0.5 \times 25 \times 50 \\
+0.5 \times 25 \times 50 & 50^{2}
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+625 & 625 \\
+625 & 2500
+\end{pmatrix}.
+\end{align*}
+Note that we follow the convention of Grinold and Kahn convention of representing risk and variance in decimal, rather than as percentages. (See the brief discussion and calculations at (4.12) on p.97.)
+
+Minimising risk is the same as minimising variance, so we simplify by doing the latter. Let $a$ and $b$ be the respective holdings in stocks A and B. Our Lagrangian function is then
+\begin{align*}
+\begin{pmatrix}
+a & b
+\end{pmatrix}
+\begin{pmatrix}
+625 & 625 \\
+625 & 2500
+\end{pmatrix}
+&\begin{pmatrix}
+a\\
+b
+\end{pmatrix}
+- \theta(a + b - 1) \\
+&= 625a^{2} + 1250ab + 2500b^{2} - \theta(a + b - 1).
+\end{align*}
+By setting the three partial derivatives of this function equal to zero, we obtain the following equations.
+\begin{align*}
+1250a + 1250b - \theta &= 0\\
+1250a + 5000b - \theta &= 0\\
+a + b &= 1.
+\end{align*}
+It is clear from the first two equations that $b = 0$, and so $a = 1$. Hence the fully invested portfolio of A and B with minimum total risk has 100\% of its holdings in A and 0\% of its holdings in B.
 \end{proof}
 
 \begin{problem}{3.3}

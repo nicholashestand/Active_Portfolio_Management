@@ -1,0 +1,70 @@
+
+For the following exercises, consider the following model of a stock picker's forecast monthly alphas:
+\begin{align*}
+\alpha_{n} &= a \cdot \theta_{n} + b \cdot z_{n}\\
+\std{\alpha_{n}} &= \mathrm{IC} \cdot \std{\theta_{n}} = \frac{\mathrm{IC} \cdot \omega_{n}}{\sqrt{12}}
+\end{align*}
+where $\alpha_{n}$ is the forecast residual return, $\theta_{n}$ is the subsequent realized return, and $z_{n}$ is a random variable with mean 0 and standard deviation 1, uncorrelated with $\theta_{n}$ and with $z_{m}$ ($m \neq n$).
+
+\begin{problem}{6a.1}
+Given that $a = \mathrm{IC}^{2}$, what coefficient $b$ will ensure that \[\std{\alpha_{n}} = \mathrm{IC} \cdot \std{\theta_{n}} = \frac{\mathrm{IC} \cdot \omega_{n}}{\sqrt{12}}.\]
+\end{problem}
+
+\begin{proof}[Solution]
+The phrasing of this question is liable to confuse. We are being asked to solve for $b$ given that $a = \mathrm{IC}^{2}$ along with the other constraints of the model.
+
+We proceed by computing $\var{\alpha_{n}}$ and then substituting this into the equation $\var{\alpha_{n}} = \mathrm{IC}^{2} \cdot \var{\theta_{n}}$.
+\begin{align*}
+\var{\alpha_{n}} &= \var{a\cdot \theta_{n} + b \cdot z_{n}}\\
+&= a^{2}\var{\theta_{n}} + b^{2} &\because \cov{\theta_{n},z_{n}} = 0,~ \var{z_{n}} = 1. 
+\end{align*}
+Hence, we obtain that
+\begin{align*}
+a^{2}&\var{\theta_{n}} + b^{2} = \mathrm{IC}^{2} \cdot \var{\theta_{n}}\\
+\therefore~b^{2} &= (\mathrm{IC}^{2} - a^{2})\var{\theta_{n}}\\
+\therefore~b &= \sqrt{\mathrm{IC}^{2} - a^{2}}\,\std{\theta_{n}}\\
+&=\sqrt{\frac{\mathrm{IC}^{2} - a^{2}}{12}}\,\omega_{n}
+\end{align*}
+Note that if we assume that $z_{n}$ is symmetrically distributed about 0, then it does not matter whether we choose the positive or the negative square root.
+
+Then, we finally substitute in that $a = \mathrm{IC}^{2}$, obtaining that \[b = \sqrt{\frac{\mathrm{IC}^{2} - \mathrm{IC}^{4}}{12}}\,\omega_{n}.\]
+\end{proof}
+
+\begin{problem}{6a.2}
+What is the manager's information coefficient in this model?
+\end{problem}
+\begin{proof}[Solution]
+We apply the definition of the information coefficient and expand:
+\begin{align*}
+\mathrm{IC} &= \corr{\alpha, \theta_{n}}\\
+&= \frac{\cov{\alpha_{n}, \theta_{n}}}{\std{\alpha_{n}}\std{\theta_{n}}}\\
+&= \frac{a\var{\theta_{n}}}{\mathrm{IC} \cdot \std{\theta_{n}} \cdot \std{\theta_{n}}}\\
+&= \frac{a}{\mathrm{IC}}.
+\end{align*}
+This implies that \[\mathrm{IC}^{2} = a,\] and so $\mathrm{IC} = \sqrt{a}$. Note that we must take the positive square root, since $\std{\alpha_{n}} = \mathrm{IC}\cdot \std{\theta_{n}}$, and standard deviations are always positive.
+\end{proof}
+
+\begin{problem}{6a.3}
+Assume that the model applies to the 500 stocks in the S\&P 500, with $a = 0.0001$ and $\omega_{n} = 20$ percent. What is the information ratio of the model, according to the fundamental law?
+\end{problem}
+\begin{proof}[Solution]
+The fundamental law states that \[\mathrm{IR} = \mathrm{IC} \cdot \sqrt{\mathrm{BR}}.\] Since there are 500 stocks with alphas forecast monthly, we have that $\mathrm{BR} = 12 \times 500 = 6{,}000$. Then, by 6a.2, we have that $\mathrm{IC} = \sqrt{0.0001} = 0.01$. Hence \[\mathrm{IR} = 0.01 \times \sqrt{6{,}000} = 0.775.\]
+\end{proof}
+
+\begin{problem}{6a.4}
+Distinguish this model of alpha from the binary model introduced in the main part of the chapter.
+\end{problem}
+\begin{proof}[Solution]
+First we recall the binary model of alpha introduced in the main part of the chapter. Here we have that \[\theta_{n} = \sum_{j = 1}^{m}\theta_{n, j},\] where $\theta_{n,j}$ are random variables with mean 0 and standard deviation 1, and $m$ is the number of these variables, which gives the number of components of the residual return $\theta_{n}$. Our forecasting procedure gives us the value of $\theta_{n,1}$, but leaves us in the dark about the values of $\theta_{n, j}$ for $j > 1$.
+
+To compare the two models, we may write \setcounter{equation}{0}
+\begin{align}
+\label{model_current}\alpha_{n} &= a\cdot\theta_{n} + b \cdot z_{n}\\
+\theta_{n,1} &= \theta_{n} - \sum_{j = 2}^{m}\theta_{n, j},\label{model_binary}
+\end{align}
+since $\alpha_{n}$ and $\theta_{n, 1}$ are the forecast alphas for the respective models.
+
+Hence, one can see that the two models are different in several ways. The coefficient of $\theta_{n}$ in (\ref{model_binary}) is 1, whereas the coefficient of $\theta_{n}$ in (\ref{model_current}) is $a$, which is not necessarily equal to 1. Likewise, $b \cdot z_{n}$ is a random variable with mean zero and standard deviation $b$, whereas $\sum_{j = 2}^{m}\theta_{n, j}$ is a random variable with mean zero and standard deviation $\sqrt{m - 1}$. We cannot simply set $a = 1$ and $b = \sqrt{m - 1}$ to make the two models identical, since in the current model we also have the constraint $\std{\alpha_{n}} = \mathrm{IC} \cdot \std{\theta_{n}}$ to be mindful of. We know from 6a.2 that this constraint implies $\mathrm{IC}^{2} = a$, and so $\mathrm{IC} = 1$ if $a = 1$. On the other hand, in the binary model we have $\mathrm{IC} = \frac{1}{\sqrt{m}}$, following the reasoning in the main body of the chapter. Hence, the two models are distinct unless $m = 1$ and $b = 0$, in which case the forecast alphas are perfect.
+
+To summarise, each model gives the forecast alpha as a linear combination of the subsequent realised alpha and some other random variable. But these linear combinations are different in each model, as are the additional random variables. By adjusting the coefficients, one can make the two models give the forecast alpha as the same linear combinations of the realised alpha and another random variable, but then the information coefficients given by the models will certainly be distinct, due to the constraint that $\std{\alpha_{n}} = \mathrm{IC} \cdot \std{\theta_{n}}$ in the current model.
+\end{proof}

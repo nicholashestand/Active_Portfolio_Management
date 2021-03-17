@@ -1,0 +1,230 @@
+
+\begin{problem}{2a.1}
+Show that $\beta_{C} = \frac{\sigma_{C}^{2}}{\sigma_{M}^{2}}$. Since portfolio $C$ is the minimum-variance portfolio, this relationship implies that $\beta_{C} \leqslant 1$, with $\beta_{C} = 1$ only if the market is the minimum-variance portfolio.
+\end{problem}
+
+\begin{proof}[Solution]
+Since $\beta_{C}$ is defined relative to the market portfolio, we have that the characteristic of the market portfolio is $\mathbf{\beta}$ by (2A.19). Hence $\beta_{C}$ is equal to the exposure of portfolio $C$ to the characteristic of the market portfolio. Then, by (2A.4), we have \[e_{M}\sigma_{C}^{2} = \beta_{C}\sigma_{M}^{2}.\] We must have $e_{M} = 1$, since the balance of borrowing and lending in the market portfolio must balance out. Hence \[\beta_{C} = \frac{\sigma_{C}^{2}}{\sigma_{M}^{2}}.\]
+\end{proof}
+
+\begin{problem}{2a.2}
+Show that $f_{Q} = f_{C} + \frac{\sigma_{C}^{2}}{\kappa f_{C}}$, i.e., $\kappa = \frac{\sigma_{C}^{2}}{f_{C}(f_{Q} - f_{C})}$
+\end{problem}
+
+\begin{proof}[Solution]
+We begin with (2A.35):
+\[\frac{f_{C}}{\sigma_{C}^{2}} = \frac{f_{Q}}{\sigma_{Q}^{2}}.\]
+We then deduce
+\begin{align*}
+&f_{C}\sigma_{Q}^{2} = f_{Q}\sigma_{C}^{2}\\
+\therefore \quad &f_{C}(\sigma_{Q}^{2} - \sigma_{C}^{2}) = \sigma_{C}^{2}(f_{Q} - f_{C})\\
+\therefore \quad &\frac{(\sigma_{Q}^{2} - \sigma_{C}^{2})}{(f_{Q} - f_{C})^{2}} = \frac{\sigma_{C}^{2}}{f_{C}(f_{Q} - f_{C})}.
+\end{align*}
+This then gives us that \[\kappa = \frac{\sigma_{C}^{2}}{f_{C}(f_{Q} - f_{C})},\] as desired.
+\end{proof}
+
+\begin{problem}{2a.3}
+What is the ``characteristic'' associated with the MMI portfolio? How would you find it?
+\end{problem}
+
+\begin{proof}[Solution]
+By Proposition 1.3, the characteristic associated with a portfolio is the vector of betas of all assets with respect to the portfolio. This then applies to the MMI portfolio.
+
+To find the characteristic, one could calculate these betas using regression.
+\end{proof}
+
+\begin{problem}{2a.4}
+Prove that the fully invested portfolio that maximizes $f_{P} - \lambda\sigma_{P}^{2}$ has expected excess return $f^{\ast} = f_{C} + \frac{1}{2\lambda\kappa}$.
+\end{problem}
+
+\begin{proof}[Solution]
+To start, we note the following facts, which we will need to use in this question, as well as later questions.
+\begin{align*}
+\mathbf{h}_{C} &= \frac{\mathbf{V}^{-1}\mathbf{e}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}, & (2A.14)\\
+\sigma_{C}^{2} &= \frac{1}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}, & (2A.15).
+\end{align*}
+We also have \[h_{Q} = \frac{\mathbf{h}_{q}}{e_{q}} = \frac{\mathbf{V}^{-1}\mathbf{f}}{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f}}\frac{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}} = \frac{\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}},\] where we draw upon (2A.23) and Proposition 3. We also note \[\sigma_{Q}^{2} = \frac{f_{Q}\sigma_{C}^{2}}{f_{C}} = \frac{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}\frac{1}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}\frac{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{e}} = \frac{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f}}{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2}},\] drawing upon (2A.35). Finally, note that $\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{e} = \mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}$ because $\mathbf{V}$ is a symmetric matrix, and so $\mathbf{V}^{-1}$ is symmetric too.
+
+In this question we need to maximise \[\mathbf{h}^{T}\mathbf{f} - \lambda\mathbf{h}^{T}\mathbf{V}\mathbf{h}\] subject to the constraint \[\mathbf{e}^{T}\mathbf{h} = 1.\] We use the method of Lagrange multipliers, considering the function \[\mathbf{h}^{T}\mathbf{f} - \lambda\mathbf{h}^{T}\mathbf{V}\mathbf{h} - \theta(\mathbf{e}^{T}\mathbf{h} - 1)\] and obtaining the equations
+\begin{align*}
+\mathbf{f} - 2\lambda\mathbf{V}\mathbf{h} - \theta\mathbf{e} &= 0, \\
+\mathbf{e}^{T}\mathbf{h} &= 1.
+\end{align*}
+By rearranging the first equation, we obtain that \[\mathbf{h} = \frac{1}{2\lambda}\mathbf{V}^{-1}(\mathbf{f} - \theta\mathbf{e}).\] We then substitute this into the second equation, which gives us that \[\frac{1}{2\lambda}\mathbf{e}^{T}\mathbf{V}^{-1}(\mathbf{f} - \theta\mathbf{e}) = 1.\] We can now solve for $\theta$:
+\begin{align*}
+&\mathbf{e}^{T}\mathbf{V}^{-1}(\mathbf{f} - \theta\mathbf{e}) = 2\lambda \\
+\therefore \quad &\theta\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e} = \mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f} - 2\lambda \\
+\therefore \quad &\theta = \frac{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}} - \frac{2\lambda}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}.
+\end{align*}
+Hence, the holdings of the portfolio are
+\begin{align*}
+\mathbf{h} &= \frac{1}{2\lambda}\mathbf{V}^{-1}\left(\frac{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}} - \frac{2\lambda}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}\mathbf{e}\right)\\
+&= \frac{\mathbf{V}^{-1}\mathbf{e}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}} + \frac{1}{2\lambda}\left(\mathbf{V}^{-1}\mathbf{f} - \frac{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}\mathbf{V}^{-1}\mathbf{e}\right).
+\end{align*}
+From this we can compute the expected excess return of the portfolio, namely
+\begin{align*}
+\mathbf{f}^{T}\mathbf{h} &= \frac{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{e}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}} + \frac{1}{2\lambda}\left(\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f} - \frac{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}\right) & \\
+&= f_{C} + \frac{1}{2\lambda}\left(\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f} - \frac{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}\right) & \\
+&= f_{C} + \frac{1}{2\lambda}\frac{\left(\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f} - \frac{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}\right)\left(\frac{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f}}{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2}} - \frac{1}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}\right)}{\frac{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f}}{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2}} - \frac{1}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}} &  \\
+&= f_{C} + \frac{1}{2\lambda}\frac{\frac{(\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f})^{2}}{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2}} - 2\frac{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}} + \frac{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2}}{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e})^{2}}}{\frac{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f}}{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2}} - \frac{1}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}} & \\
+&= f_{C} + \frac{1}{2\lambda}\frac{f_{Q}^{2} - 2f_{Q}f_{C} - f_{C}^{2}}{\sigma_{Q}^{2} - \sigma_{C}^{2}} & \\
+&= f_{C} + \frac{1}{2\lambda}\frac{(f_{Q} - f_{C})^{2}}{\sigma_{Q}^{2} - \sigma_{C}^{2}} &\\
+&= f_{C} + \frac{1}{2\lambda\kappa}, & 
+\end{align*}
+as desired.
+\end{proof}
+
+\begin{problem}{2a.5}
+Prove that portfolio $Q$ is the optimal solution in Exercise 4 if $\lambda = \frac{f_{C}}{2\sigma_{C}^{2}} = \frac{f_{Q}}{2\sigma_{Q}^{2}}$.
+\end{problem}
+
+\begin{proof}[Solution]
+By (2A.14) and (2A.15), \[\frac{f_{C}}{\sigma_{C}^{2}} = \mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{e}.\] By the solution to the previous problem, we have \[\mathbf{h} = \frac{\mathbf{V}^{-1}\mathbf{e}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}} + \frac{1}{2\lambda}\left(\mathbf{V}^{-1}\mathbf{f} - \frac{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}\mathbf{V}^{-1}\mathbf{e}\right).\] Hence, if $\lambda =  \frac{f_{C}}{2\sigma_{C}^{2}}$, we have that
+\begin{align*}
+\mathbf{h} &= \frac{\mathbf{V}^{-1}\mathbf{e}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}} + \frac{\mathbf{V}^{-1}\mathbf{f}}{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{e}} - \frac{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}\frac{\mathbf{V}^{-1}\mathbf{e}}{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{e}} \\
+&= \frac{\mathbf{V}^{-1}\mathbf{f}}{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{e}},
+\end{align*}
+which are the holdings of portfolio $Q$, as we noted in the solution to the previous problem.
+\end{proof}
+
+
+\begin{problem}{2a.6}
+Suppose portfolio $T$ is on the fully invested efficient frontier. Prove Eq. (2A.45), i.e., that there
+exists a $w_{T}$ such that $h_T = w_T h_C + (1 – w_T )h_Q$.
+\end{problem}
+
+\begin{proof}[Solution]
+Since $T$ is on the fully invested efficient frontier, $T$ has minimum risk amongst all portfolios with the same expected return $f_{P}$. Hence, to find $T$, we wish to minimise \[\frac{\mathbf{h}^{T}\mathbf{V}\mathbf{h}}{2}\] subject to the constraints
+\begin{align*}
+\mathbf{e}^{T}\mathbf{h} &= 1\\
+\mathbf{f}^{T}\mathbf{h} &= f_{P}.
+\end{align*}
+As always, we use the method of Lagrange multipliers and so consider \[\frac{\mathbf{h}^{T}\mathbf{V}\mathbf{h}}{2} + \theta_{1}(\mathbf{e}^{T}\mathbf{h} - 1) + \theta_{2}(\mathbf{f}^{T}\mathbf{h} - f_{P}).\] We hence need to solve the simultaneous equations
+\begin{align*}
+\mathbf{V}\mathbf{h} + \theta_{1}\mathbf{e} + \theta_{2}\mathbf{f} &= 0, \\
+\mathbf{e}^{T}\mathbf{h} &= 1, \\
+\mathbf{f}^{T}\mathbf{h} &= f_{P},
+\end{align*}
+From the first equation we obtain that 
+\begin{equation}\label{eq:6h}
+\mathbf{h} = \mathbf{V}^{-1}(-\theta_{1}\mathbf{e} - \theta_{2}\mathbf{f}).
+\end{equation}
+Substituting this into the other two equations gives
+\begin{align*}
+-\theta_{1}\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e} - \theta_{2}\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f} &= 1,\\
+-\theta_{1}\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{e} - \theta_{2}\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f} &= f_{P}.
+\end{align*}
+We now have two simultaneous equations for $\theta_{1}$ and $\theta_{2}$, which we can solve as follows. We rearrange the first equation for $\theta_{1}$, obtaining
+\[\theta_{1} = - \frac{\theta_{2}\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f} + 1}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}.\] We can then substitute this into the second equation to give \[\frac{(\theta_{2}\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f} + 1)\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}} - \theta_{2}\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f} = f_{P}.\] We now solve this equation for $\theta_{2}$.
+\begin{align*}
+&\theta_{2}(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2} + \mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f} - \theta_{2}(\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f})(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}) = f_{P}\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e} \\
+\therefore \quad &((\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2} - (\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f})(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}))\theta_{2} = f_{P}\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e} - \mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f} \\
+\therefore \quad &\theta_{2} = \frac{f_{P}\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e} - \mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2} - (\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f})(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e})}
+\end{align*}
+This gives $\theta_{1}$ via our expression for $\theta_{1}$ in terms of $\theta_{2}$.
+\begin{align*}
+\theta_{1} &= - \frac{\frac{f_{P}\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e} - \mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2} - (\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f})(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e})}\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f} + 1}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}} \\
+&= -\frac{(f_{P}\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e} - \mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f} + (\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2} - (\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f})(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e})}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}((\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2} - (\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f})(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}))}\\
+&= - \frac{f_{P}\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f} - \mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f}}{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2} - (\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f})(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e})}
+\end{align*}
+Having solved for $\theta_{1}$ and $\theta_{2}$, we now substitute back into (\ref{eq:6h}) to find $\mathbf{h}$.
+\begin{align*}
+\mathbf{h} &= -\theta_{1}\mathbf{V}^{-1}\mathbf{e} - \theta_{2} \mathbf{V}^{-1}\mathbf{f}\\
+&= \frac{f_{P}\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f} - \mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f}}{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2} - (\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f})(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e})}\mathbf{V}^{-1}\mathbf{e} + \frac{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f} - f_{P}\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}}{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2} - (\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f})(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e})}\mathbf{V}^{-1}\mathbf{f}\\
+&= \frac{f_{P}(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}) - (\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f})(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e})}{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2} - (\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f})(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e})}\frac{\mathbf{V}^{-1}\mathbf{e}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}} + \frac{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2} - f_{P}(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e})(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})}{(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f})^{2} - (\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f})(\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e})}\frac{\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}\\
+&= \frac{f_{P} - \frac{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}}{\frac{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}} - \frac{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}}h_{C} + \frac{\frac{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}} - f_{P}}{\frac{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{e}} - \frac{\mathbf{f}^{T}\mathbf{V}^{-1}\mathbf{f}}{\mathbf{e}^{T}\mathbf{V}^{-1}\mathbf{f}}}h_{Q}\\
+&= \frac{f_{P} - f_{Q}}{f_{C} - f_{Q}}h_{C} + \frac{f_{C} - f_{P}}{f_{C} - f_{Q}}h_{Q}\\
+&= \frac{f_{Q} - f_{P}}{f_{Q} - f_{C}}h_{C} + \frac{f_{P} - f_{C}}{f_{Q} - f_{C}}h_{C}.
+\end{align*}
+We hence recover equation (2A.45).
+\end{proof}
+
+
+\begin{problem}{2a.7}
+If $T$ is fully invested and efficient and $T \neq C$, prove that there exists a fully invested efficient portfolio $T^{\ast}$ such that $\cov{r_{T}, r_{T^{\ast}}} = 0$.
+\end{problem}
+
+\begin{proof}[Solution]
+By the previous problem, we know that we must be able to write
+\begin{align*}
+h_{T} &= w_{T}h_{C} + (1 - w_{T})h_{Q}\\
+h_{T^{\ast}} &= w_{T^{\ast}}h_{C} + (1 - w_{T^{\ast}})h_{Q},
+\end{align*}
+since $T$ and $T^{\ast}$ are fully invested efficient portfolios. Hence, we have
+\begin{align*}
+r_{T} &= w_{T}r_{C} + (1 - w_{T})r_{Q}\\
+r_{T^{\ast}} &= w_{T^{\ast}}r_{C} + (1 - w_{T^{\ast}})r_{Q}.
+\end{align*}
+Our approach is to use these equations to compute $\cov{r_{T}, r_{T^{\ast}}}$ in terms of $w_{T}$, $w_{T^{\ast}}$, and constants. Then, by setting this covariance equal to zero, we can solve for $w_{T^{\ast}}$ in terms of $w_{T}$. This then gives us the desired portfolio $T^{\ast}$ which is uncorrelated with $T$. Thus
+\begin{align*}
+\cov{r_{T}, r_{T^{\ast}}} &= \cov{w_{T}r_{C} + (1 - w_{T})r_{Q}, w_{T^{\ast}}r_{C} + (1 - w_{T^{\ast}})r_{Q}} \\
+&= w_{T}w_{T^{\ast}}\sigma_{C}^{2} + (1 - w_{T})(1 - w_{T^{\ast}})\sigma_{Q}^{2} + ((1 - w_{T})w_{T^{\ast}} + (1 - w_{T^{\ast}})w_{T})\sigma_{C, Q}\\
+&= w_{T}w_{T^{\ast}}\sigma_{C}^{2} + (1 - w_{T})(1 - w_{T^{\ast}})\frac{f_{Q}}{f_{C}}\sigma_{C}^{2} + ((1 - w_{T})w_{T^{\ast}} + (1 - w_{T^{\ast}})w_{T})\sigma_{C}^{2} & \because (2A.17), (2A.35)\\
+&= \sigma_{C}^{2}\left(w_{T}w_{T^{\ast}} + \frac{f_{Q}}{f_{C}} - \frac{f_{Q}}{f_{C}}w_{T} - \frac{f_{Q}}{f_{C}}w_{T^{\ast}} + \frac{f_{Q}}{f_{C}}w_{T}w_{T^{\ast}} + w_{T^{\ast}} + w_{T} - 2w_{T}w_{T^{\ast}}\right) \\
+&= \sigma_{C}^{2}\left[ \left(\frac{f_{Q}}{f_{C}} - 1 \right)w_{T}w_{T^{\ast}} + \left(1 - \frac{f_{Q}}{f_{C}}\right)w_{T} + \left(1 - \frac{f_{Q}}{f_{C}}\right)w_{T^{\ast}} + \frac{f_{Q}}{f_{C}}\right].
+\end{align*}
+Since we desire $\cov{r_{T}, r_{T^{\ast}}} = 0$, we must have
+\begin{align*}
+&\left(\frac{f_{Q}}{f_{C}} - 1 \right)w_{T}w_{T^{\ast}} + \left(1 - \frac{f_{Q}}{f_{C}}\right)w_{T} + \left(1 - \frac{f_{Q}}{f_{C}}\right)w_{T^{\ast}} + \frac{f_{Q}}{f_{C}} = 0\\
+\iff \quad &\left[ \left(\frac{f_{Q}}{f_{C}} - 1\right) w_{T} + \left(1 - \frac{f_{Q}}{f_{C}}\right)\right]w_{T^{\ast}} = \left(\frac{f_{Q}}{f_{C}} - 1\right)w_{T} - \frac{f_{Q}}{f_{C}}\\
+\iff \quad &w_{T^{\ast}} = \frac{\left(\frac{f_{Q}}{f_{C}} - 1\right)w_{T} -\frac{f_{Q}}{f_{C}}}{\left(\frac{f_{Q}}{f_{C}} - 1 \right)w_{T} + \left(1 - \frac{f_{Q}}{f_{C}}\right)}.
+\end{align*}
+Thus, if we set $w_{T^{\ast}}$ as above, we have $\cov{r_{T}, r_{T^{\ast}}} = 0$. This establishes the existence of such a portfolio $T^{\ast}$.
+
+Note that we must assume $T \neq C$, so that $w_{T} \neq 1$ and the denominator of the fraction is non-zero.
+\end{proof}
+
+
+\begin{problem}{2a.8}
+For any $T \neq C$ on the efficient frontier and any fully invested portfolio $P$, show that we can write \[E\{r_{P}\} = E\{r_{T^{\ast}}\} + E\{r_{T} - r_{T^{\ast}}\}\frac{\mathrm{Cov}\{r_{P}, r_{T}\}}{\mathrm{Var}\{r_{T}\}}\] where $T^{\ast}$ is the fully invested efficient portfolio that is uncorrelated with $T$.
+\end{problem}
+
+\begin{proof}[Solution]
+We proceed as follows. We must assume that $T \neq C$ so that we can apply Problem 2a.7.
+\begin{align*}
+E\{r_{T^{\ast}}\} &+ E\{r_{T} - r_{T^{\ast}}\}\frac{\cov{r_{P, r_{T}}}}{\var{r_{T}}}\}\\
+&= f_{T^{\ast}} + (f_{T} - f_{T^{\ast}})\frac{\cov{r_{P} - r_{T^{\ast}}, r_{T}}}{\cov{r_{T} - r_{T^{\ast}}, r_{T}}} ~ \because ~ T \text{ and } T^{ast} \text{ are uncorrelated}\\
+&= f_{T^{\ast}} + (f_{T} - f_{T^{\ast}})\frac{\cov{r_{P} - r_{T^{\ast}}, w_{T}r_{C} + (1 - w_{T})r_{Q}}}{\cov{r_{T} - r_{T^{\ast}}, w_{T}r_{C} + (1 - w_{T})r_{Q}}} \\
+&= f_{T^{\ast}} + (f_{T} - f_{T^{\ast}})\frac{w_{T}(\cov{r_{P}, r_{C}} - \cov{r_{T^{\ast}}, r_{C}}) + (1 - w_{T})(\cov{r_{P}, r_{Q}} - \cov{r_{T^{\ast}, r_{Q}}})}{w_{T}(\cov{r_{T}, r_{C}} - \cov{r_{T^{\ast}}, r_{C}}) + (1 - w_{T})(\cov{r_{T}, r_{Q}} - \cov{r_{T^{\ast}, r_{Q}}})}\\
+&= f_{T^{\ast}} + (f_{T} - f_{T^{\ast}})\frac{w_{T}(e_{P}\sigma_{C}^{2} - e_{T^{\ast}}\sigma_{C}^{2}) + (1 - w_{T})(e_{q}f_{P}\sigma_{Q}^{2} - e_{q}f_{T^{\ast}}\sigma_{Q}^{2})}{w_{T}(e_{T}\sigma_{C}^{2} - e_{T^{\ast}}\sigma_{C}^{2}) + (1 - w_{T})(e_{q}f_{T}\sigma_{Q}^{2} - e_{q}f_{T^{\ast}}\sigma_{Q}^{2})} ~ \because ~ (2A.4)\\
+&= f_{T^{\ast}} + (f_{T} - f_{T^{\ast}})\frac{(1 - w_{T})e_{q}\sigma_{Q}^{2}(f_{P} - f_{T^{\ast}})}{(1 - w_{T})e_{q}\sigma_{Q}^{2}(f_{T} - f_{T^{\ast}})} ~ \because ~ \text{The portfolios are all fully invested}\\
+&= f_{T^{\ast}} + (f_{P} - f_{T^{\ast}})\\
+&= f_{P}.
+\end{align*}
+Note that $1 - w_{T} \neq 0$ since $T \neq C$.
+\end{proof}
+
+
+\begin{problem}{2a.9}
+If $P$ is any fully invested portfolio and $T$ is the efficient fully invested portfolio with the same expected returns as $P$, $\mu_{P} = \mu_{T}$, we can always write the returns to $P$ as $r_{P} = r_{C} + (r_{T} - r_{C}) + (r_{P} - r_{T})$. Prove that these three components of return are uncorrelated. We can interpret the risks associated with these three components as the cost of full investment, $\mathrm{Var}\{r_{C}\}$; the cost of expected return $\mu_{P} - \mu_{C}$, $\mathrm{Var}\{r_{T} - r_{C}\}$; and the diversifiable cost, $\mathrm{Var}\{r_{P} - r_{T}\}$.
+\end{problem}
+
+\begin{proof}[Solution]
+There are three pairs of components that we need to show are uncorrelated and we address each in turn.
+\begin{align*}
+\mathrm{Cov}\{r_{C}, r_{T} - r_{C}\} &= \cov{r_{C}, r_{T}} - \cov{r_{C}, r_{C}}\\
+&= e_{T}\sigma_{C}^{2} - \sigma_{C}^{2} & (2A.4)\\
+&= 0.
+\end{align*}
+Here the last line follows from the fact that $T$ is fully invested. We next consider the following.
+\begin{align*}
+\cov{r_{C}, r_{P} - r_{T}} &= \cov{r_{C}, r_{P}} - \cov{r_{C}, r_{T}} \\
+&= e_{P}\sigma_{C}^{2} - e_{T}\sigma_{C}^{2} & (2A.4)\\
+&= 0.
+\end{align*}
+Again, the last line follows from the fact that $T$ and $P$ are both fully invested. We now consider the last pair of components.
+\begin{align*}
+\cov{r_{T} - r_{C}, r_{P} - r_{T}} &= \cov{r_{T}, r_{P} - r_{T}} - \cov{r_{C}, r_{P} - r_{T}}\\
+&= \cov{r_{T}, r_{P} - r_{T}},
+\end{align*}
+by above. By Problem 2.a8, we have
+\begin{align*}
+&& E\{r_{P}\} &= E\{r_{T^{\ast}}\} + E\{r_{T} - r_{T^{\ast}}\}\frac{\cov{r_{P}, r_{T}}}{\var{r_{T}}}\\
+& \therefore & E\{r_{T}\}\var{r_{T}} &= \var{r_{T}}E\{r_{T^{\ast}}\} + E\{r_{T} - r_{T^{\ast}}\}\cov{r_{P}, r_{T}} & \because E\{r_{T}\} = E\{r_{P}\}\\
+& \therefore & E\{r_{T} - r_{T^{\ast}}\}\var{r_{T}} &= E\{r_{T} - r_{T^{\ast}}\}\cov{r_{P}, r_{T}}\\
+& \therefore & \var{r_{T}} &= \cov{r_{P}, r_{T}} \\
+& \therefore & \cov{r_{T}, r_{P} - r_{T}} &= 0.
+\end{align*}
+This completes the proof.
+\end{proof}
+
