@@ -9,7 +9,7 @@
 	&=E\left\{\sum_{k=1}^{K}X_{n,k}\cdot b_{k} + u_{n}\right\}\\
 	&=\sum_{k=1}^{K}X_{n,k}\cdot m_{k}
   \end{align*}
-  where $b_{k}$ is the factor return for factor $k$ and $m_{k}$ is the factor forecast for factor $k$. Hence it seems that the expected value of $u_{n}$ is zero. This is in line with the CAPM which is a one factor APT model where the factor is the stock's beta:
+  where $b_{k}$ is the factor return for factor $k$ and $m_{k}$ is the factor forecast for factor $k$. Hence the expected value of $u_{n}$ is zero. This is in line with the CAPM which is a one factor APT model where the factor is the stock's beta:
   \begin{align*}
    f_{n}&=E\{r_{n}\}\\
 	&=E\left\{\beta_{n}r_{M} + \theta_{n}\right\}\\
@@ -38,7 +38,9 @@
 \end{problem}
 
 \begin{proof}[Solution]
- The CAPM forecasts exceed the APT forecast because of the factor forecasts. It could be the other way around depending on the factor forecasts. The forecasts can be anything (there don't seem to be any hard and fast constraints) and so they are not required to match the CAPM forecasts on average.
+ The CAPM forecasts exceed the APT forecast because of the factor forecasts. In particular, the stocks in Table 7.2 tend to have above average size, as can be seen from the fact that the size exposures are above zero, when the size factor is forecast -1.5 percent. Similarly, the stocks in Table 7.2 tend to have below average growth, as can be seen from the fact that the growth exposures are negative, whilst the growth factor is forecast 2 percent.
+
+ The APT forecasts are not \emph{required} to match the CAPM forecasts on average \emph{per se}, but if the two sets of forecasts are to be consistent with each other, then the APT forecasts should match the CAPM forecasts on average. For instance, there will exist a different set of stocks to those in Table 7.2 where the companies have below average size and above average growth, which will cause the APT forecasts to exceed the CAPM forecasts. The factor forecasts should average out to give the market forecast.
 \end{proof}
 
 \begin{problem}{7.4}
@@ -46,7 +48,7 @@
 \end{problem}
 
 \begin{proof}[Solution]
-  If a manager uses a constant $c$ over time, that implies that his forecasts for earnings-to-price are not changing. However, the exposures to earnings to price will be changing leading to changes in the stock forecasts.
+  If a manager uses a constant $c$ over time, it implies that his forecasts for earnings-to-price are not changing. However, the exposures to earnings to price will be changing, leading to changes in the stock forecasts.
 \end{proof}
 
 
