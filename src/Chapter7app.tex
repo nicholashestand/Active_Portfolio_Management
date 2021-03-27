@@ -1,0 +1,30 @@
+
+\begin{problem}{7a.1}
+A factor model contains an intercept if some weighted combination of the columns of $\X$ is equal to a vector of 1s. This will, of course, be true if one of the columns of $\X$ is a column of 1s. It will also be true if $\X$ contains a classification of stocks by industry or economic sector. The technical requirement for a model to have an intercept is that there exists a $K$-element vector $g$ such that $\e = \X
+\cdot \g$. Assume that the model contains an intercept, and demonstrate that we can then determine the fraction of the portfolio invested in risky assets by looking only at the portfolio's factor exposures.
+\end{problem}
+\begin{proof}[Solution]
+Let $P$ be our portfolio. Then the factor exposures of the portfolio are given by $\x_{P}^{T} = \h_{P}^{T} \cdot \X$. We are assuming that the factor model has an intercept, so that there is a $K$-element vector $\g$ such that $\e = \X \cdot \g$. Hence we may calculate
+\begin{align*}
+\x_{P}^{T} \cdot \g &= \h_{P}^{T} \cdot \X \cdot \g\\
+&= \h_{P}^{T} \cdot \e,
+\end{align*}
+which is the fraction of the portfolio $P$ invested in risky assets.
+\end{proof}
+
+\begin{problem}{7a.2}
+Show that a model that does not contain an intercept is indeed strange. In particular, show there will be a fully invested portfolio with zero exposures to all the factors---a portfolio $P$ with $\h_{P}^{T} \cdot \e = 1$ (fully invested) and $\x_P = \X^T \cdot \h_P = \mathbf{0}$ (zero exposure to each factor).
+\end{problem}
+\begin{proof}[Solution]
+We use tools from linear algebra. Suppose that the factor model does not contain an intercept. We have that $\X$ is a linear map from $\mathbb{R}^{K} \to \mathbb{R}^{N}$. Let $W = \im\X$ be the image of this map or, equivalently, the column space of the matrix $\X$. Since the factor model has no intercept, we know that $\e \notin W$. Hence $\dim W < N$, and so the orthogonal space $W^{\perp}$ is non-zero. Since $(W^{\perp})^{\perp} = W$ and $\e \notin W$, then there exists a vector $\h_{P'} \in W^{\perp}$ such that $\h_{P'}^{T} \cdot \e =: e_{P'} \neq 0$. Moreover, since $\h_{P'} \in W^{\perp}$, we have that $\X^{T} \cdot \h_{P'} = \mathbf{0}$. Then we can let $\h_{P} = \frac{1}{e_{P'}}\h_{P'}$. By construction, we then have $\h_{P}^{T} \cdot \e = e_{P'}/e_{P'} = 1$ and $\x_{P} = \X^{T} \cdot \h_{P} = \frac{1}{e_{P'}} \cdot \mathbf{0} = \mathbf{0}$. Hence $\h_{P}$ gives the holdings of a fully invested portfolio with zero exposures to all the factors.
+
+Note that the converse of this problem also holds. That is, if there is a fully invested portfolio which has zero exposures to all the factors, then the model cannot have an intercept. This can be reasoned into a similar way to Problem 7a.1. Namely, let $P$ be the fully invested portfolio with zero exposures to all the factors and let $\g$ be the intercept of the model. Then
+\begin{align*}
+1 &= \h_{P}^{T} \cdot \e\\
+&= \h_{P}^{T} \cdot \X \cdot \g\\
+&= \mathbf{0}^{T} \cdot \g\\
+&= 0,
+\end{align*}
+which is clearly a contradiction. Hence there can be no model with an intercept where there exists a fully invested portfolio which has zero exposure to all factors.
+\end{proof}
+

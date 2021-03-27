@@ -8,10 +8,18 @@
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 \renewcommand{\qedsymbol}{}
 
+\DeclareMathOperator{\im}{im}
+
 \newcommand{\cov}[1]{\mathrm{Cov}\left\lbrace#1\right\rbrace}
 \newcommand{\corr}[1]{\mathrm{Corr}\left\lbrace#1\right\rbrace}
 \newcommand{\var}[1]{\mathrm{Var}\left\lbrace#1\right\rbrace}
 \newcommand{\std}[1]{\mathrm{Std}\left\lbrace#1\right\rbrace}
+
+\newcommand{\h}{\mathbf{h}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\g}{\mathbf{g}}
+\newcommand{\e}{\mathbf{e}}
+\newcommand{\X}{\mathbf{X}}
 
   \title{Solutions for \emph{Active Portfolio Management} by Grinold and Kahn}
   \author{Nicholas J. Hestand \& Nicholas J. Williams}
@@ -63,6 +71,10 @@
   \newpage
   \section*{Chapter 7}
   \subfile{src/Chapter7}
+  
+  \newpage
+  \section*{Chapter 7 technical appendix}
+  \subfile{src/Chapter7app}
   
   \newpage
   \section*{Chapter 8}
