@@ -1,0 +1,81 @@
+
+\begin{problem}{8a.1}
+Using the definitions from the technical appendix to Chap.\ 2, what is the characteristic associated
+with portfolio $S$?
+\end{problem}
+\begin{proof}[Solution]
+By (2A.3), the attribute of a portfolio with holdings $\h$ in risky assets and variance $\sigma^{2}$ is \[\frac{\V\h}{\sigma^{2}}.\] By (8A.35), the holdings of portfolio $S$ in risky assets are \[\h_{S} = \frac{-\SR_{Q} \cdot (1 + i_{F})}{\sigma_{Q}(1 + \SR^{2}_{Q})}\h_{Q}.\] Hence
+\begin{align*}
+\sigma_{S}^{2} &= \left(\frac{-\SR_{Q} \cdot (1 + i_{F})}{\sigma_{Q}(1 + \SR^{2}_{Q})}\right)^{2}\sigma_{Q}^{2} \\
+&= \frac{\SR_{Q}^{2}(1 + i_{F})^{2}}{(1 + \SR_{Q}^{2})^{2}}.
+\end{align*}
+We therefore calculate the attribute associated to portfolio $S$ to be
+\begin{align*}
+\frac{\V\h_{S}}{\sigma_{S}^{2}} &= \frac{(1 + \SR_{Q}^{2})^{2}}{\SR_{Q}^{2}(1 + i_{F})^{2}}\frac{-\SR_{Q} \cdot (1 + i_{F})}{\sigma_{Q}(1 + \SR^{2}_{Q})}\V\h_{Q}\\
+&= \frac{-(1 + \SR_{Q}^{2})}{\sigma_{Q}\SR_{Q}(1 + i_{F})}\V\h_{Q}\\
+&= \frac{-(1 + \SR_{Q}^{2})}{\sigma_{Q}\SR_{Q}(1 + i_{F})} \frac{\sigma_{Q}^{2}}{f_{Q}}\f & \because (2A.36)\\
+&= \frac{-(1 + \SR_{Q}^{2})}{\SR^{2}_{Q}(1 + i_{F})}\f.
+\end{align*}
+\end{proof}
+
+
+\begin{problem}{8a.2}
+Show that the portfolio $S$ holdings in risky assets satisfy
+\[\V \cdot \h_{S} = –\EX{R_{S}} \cdot \f.\]
+\end{problem}
+\begin{proof}[Solution]
+The holdings of portfolio $S$ in risky assets are \[\h_{S} = \frac{-\SR_{Q} \cdot (1 + i_{F})}{\sigma_{Q}(1 + \SR^{2}_{Q})}\h_{Q}.\] Hence
+\begin{align*}
+\V\h_{S} &= \frac{-\SR_{Q} \cdot (1 + i_{F})}{\sigma_{Q}(1 + \SR^{2}_{Q})}\V\h_{Q}\\
+&= \frac{-\SR_{Q} \cdot (1 + i_{F})}{\sigma_{Q}(1 + \SR^{2}_{Q})}\frac{\sigma_{Q}^{2}}{f_{Q}}\f\\
+&= -\frac{1 + i_{F}}{1 + \SR_{Q}^{2}}\f.
+\end{align*}
+Now we show that the right-hand side of the equation in the problem is also equal to this.
+\begin{align*}
+\EX{R_{S}} &= \EX{R_{F} + \frac{-\SR_{Q} \cdot (1 + i_{F})}{\sigma_{Q}(1 + \SR^{2}_{Q})}(R_{Q} - R_{F})}\\
+&= 1 + i_{F} - \frac{\SR_{Q} \cdot (1 + i_{F})}{\sigma_{Q}(1 + \SR^{2}_{Q})}f_{Q}\\
+&= \frac{(1 + i_{F})(1 + \SR_{Q}^{2})}{1 + \SR_{Q}^{2}} - \frac{\SR^{2}_{Q} \cdot (1 + i_{F})}{1 + \SR^{2}_{Q}}\\
+&= \frac{1 + i_{F}}{1 + \SR_{Q}^{2}}.
+\end{align*}
+Putting these two sets of calculations together yields the result.
+\end{proof}
+
+
+\begin{problem}{8a.3}
+Show that portfolio~$S$ exists even if $f_{C} < 0$, and that if $f_{C} = 0$, then portfolio~$S$ will consist of 100 percent cash plus offsetting long and short positions in risky assets.
+\end{problem}
+\begin{proof}[Solution]
+We start by proceeding similarly to the proof of Proposition 4. We consider a portfolio~$P(w)$ composed of a fraction $w$ invested in some arbitrary portfolio $P$, which we now do not assume to be fully invested, along with a fraction $(1 - w)$ invested in portfolio $F$. Its total return is still \[R_{P}(w) = R_{F} + w \cdot (R_{P} - R_{F}).\] We again get that the optimal $w$ is \[w_{P} = \frac{-\SR_{P} \cdot (1 + i_{F})}{\sigma_{P}\cdot (1 + \SR_{P}^{2})}\] with associated optimal expected second moment \[\EX{R_{P}^{2}(w_{P})} = \frac{(1 + i_{F})^{2}}{1 + \SR_{P}^{2}}.\] We again achieve the minimum second moment over all portfolios by maximising $\SR_{P}^{2}$. We can maximise this by choosing $P = q$, the portfolio from Proposition~2 in the technical appendix from Chapter~2, which is not necessarily fully invested but exists even if $f_{C} < 0$. By (2A.29), we get that the exposure $e_{q}$ of portfolio~$q$ is zero if $f_{C} = 0$. This means that portfolio~$q$ consists of cash plus offsetting long and short positions in risky assets. Since portfolio~$S$ consists of $q$ along with cash, portfolio~$S$ also consists of cash plus offsetting long and short positions.
+\end{proof}
+
+
+\begin{problem}{8a.4}
+Prove the portfolio S analog of Proposition 1 in the technical appendix of Chap.\ 7, i.e., that the factor model $\facmod$ explains expected excess returns if and only if portfolio $S$ is diversified with respect to $\facmod$.
+\end{problem}
+\begin{proof}[Solution]
+We first show that if portfolio $S$ is diversified with respect to $\facmod$, then $\facmod$ explains expected excess returns. Portfolio $S$ being diversified with respect to $\facmod$ means that $S$ has minimal risk among all portfolios $\h$ with $\X^{T} \cdot \h = \x_{S}$. We proceed as in the proof of Proposition~1 in the technical appendix of Chapter~7 and consider the problem of minimising \[\frac{\h^{T}\cdot \V \cdot \h}{2}\] subject to \[\X^{T} \cdot \h = \x_{S}.\] We obtain the equation \[\V \cdot \h = \X \cdot \bpi,\] where $\bpi$ is our vector of Lagrange multipliers. Since we are assuming that $S$ is diversified with respect to $\facmod$, we know that $\h_{S}$ solves this equation, so that \[\V \cdot \h_{S} = \X \cdot \bpi.\] From Exercise 8a.2 above, we know that \[\V \cdot \h_{S} = -\EX{R_{S}}\cdot \f,\] which implies that
+\begin{align*}
+\f &= \frac{-1}{\EX{R_{S}}} \V \cdot \h_{S}\\
+&= \frac{-1}{\EX{R_{S}}}\X \cdot \bpi.
+\end{align*}
+Hence, if we let $\m = \frac{-1}{\EX{R_{S}}}\bpi$, then we obtain that $\facmod$ explains expected excess returns via this vector.
+
+Now we show the converse implication, that if $\facmod$ explains expected excess returns, then portfolio $S$ is diversified with respect to $\facmod$. To this end, we suppose for contradiction that $\facmod$ explains expected excess returns and that portfolio $S$ is not diversified with respect to $\facmod$. This means that there exists a portfolio $P$ with $\sigma_{P}^{2} < \sigma_{S}^{2}$ such that \[\x_{S} = \X^{T} \cdot \h_{P} = \x_{P},\] and that there exists a vector $\m$ such that \[\f = \X\m.\] We have that portfolio $S$ minimises the second moment of total return, which we can expand as follows:
+\begin{align*}
+\EX{R_{S}^{2}} &= \EX{(1 + i_{F} + r_{S})^{2}}\\
+&= \EX{1 + 2i_{F}r_{S} + i_{F}^{2} + r_{S}^{2} + 2i_{F} + 2r_{S}}\\
+&= 1 + i_{F}^{2} + 2i_{F} + (2i_{F} + 2)\EX{r_{S}} + \EX{r_{S}^{2}}\\
+&= 1 + i_{F}^{2} + 2i_{F} + (2i_{F} + 2)\EX{r_{S}} + \EX{r_{S}}^{2} + \var{r_{S}}.
+\end{align*}
+We likewise have that \[\EX{R_{P}^{2}} = 1 + i_{F}^{2} + 2i_{F} + (2i_{F} + 2)\EX{r_{P}} + \EX{r_{P}}^{2} + \var{r_{P}}.\] By using the vector $\m$ which explains expected excess returns, we deduce
+\begin{align*}
+\EX{r_{S}} &= \f^{T} \cdot h_{S}\\
+&= \m^{T} \cdot \X^{T} \cdot h_{S}\\
+&= \m^{T} \cdot \x_{S}\\
+&= \m^{T} \cdot \x_{P}\\
+&= \m^{T} \cdot \X^{T} \cdot h_{P}\\
+&= \f^{T} \cdot h_{P}\\
+&= \EX{r_{P}}.
+\end{align*}
+Then, since $\sigma_{P}^{2} < \sigma_{S}^{2}$, we have $\var{r_{P}} < \var{r_{S}}$. Using this fact, combined with $\EX{r_{S}} = \EX{r_{P}}$, we conclude that $\EX{R_{P}^{2}} < \EX{R_{S}^{2}}$. But this contradicts portfolio $S$ being the portfolio which minimises the second moment of total return. Hence, if $\facmod$ explains expected excess returns, then portfolio $S$ must be diversified with respect to $\facmod$.
+\end{proof}
