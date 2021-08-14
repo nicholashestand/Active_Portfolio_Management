@@ -1,10 +1,59 @@
 \begin{problem}{10.1a}
 Using Eq.\ (10A.21), what is the variance of the combined forecast? What is its covariance with the return? Remember that the combined forecast is simply a linear combination of signals. We know the volatilities and correlations of all the signals, and we know the correlation of each signal with the return.
 
-Verify Eq.\ (10A.23) for the IC of the combined forecast. Demonstrate that when $K = 2$, it reduces to Eq.\ (10.27) in the main test of the chapter. 
+Verify Eq.\ (10A.23) for the IC of the combined forecast. Demonstrate that when $K = 2$, it reduces to Eq.\ (10.27) in the main text of the chapter. 
 \end{problem}
 
 \begin{proof}[Solution]
-Eq.\ (10A.21) states that \[\bphi = \omega \cdot \IC_{g}^{T} \cdot \brho_{g}^{-1} \cdot \z.\]
+Eq.\ (10A.21) states that \[\phi = \omega \cdot \IC_{\g}^{T} \cdot \brho_{\g}^{-1} \cdot \z.\] Note that $\var{\z} = \brho_{\g}$ by Eq.\ (10A.18). Hence, the variance of the combined forecast is
+\begin{align*}
+\var{\phi} &= \omega^{2} \cdot \IC_{\g}^{T} \cdot \brho_{\g}^{-1} \cdot \var{\z} \cdot \brho_{\g}^{-1} \cdot \IC_{\g}\\
+&= \omega^{2} \cdot \IC_{\g}^{T} \cdot \brho_{\g}^{-1} \cdot \brho_{\g} \cdot \brho_{\g}^{-1} \cdot \IC_{\g}\\
+&= \omega^{2} \cdot \IC_{\g}^{T} \cdot \brho_{\g}^{-1} \cdot \IC_{\g}.
+\end{align*}
+The covariance of the combined forecast with the return is
+\begin{align*}
+\cov{\phi, r} &= \cov{\omega \cdot \IC_{\g}^{T} \cdot \brho_{\g}^{-1} \cdot \z, r}\\
+&= \omega \cdot \IC_{\g}^{T} \cdot \brho_{\g}^{-1} \cdot \cov{\z, r}\\
+&= \omega \cdot \IC_{\g}^{T} \cdot \brho_{\g}^{-1} \cdot \omega \cdot \IC_{\g}\\
+&= \omega^{2} \cdot \IC_{\g}^{T} \cdot \brho_{\g}^{-1} \cdot \IC_{\g}.
+\end{align*}
+Therefore, the IC of the combined forecast is
+\begin{align*}
+\mathrm{IC}_{\phi} &= \frac{\cov{\phi, r}}{\omega \cdot \std{\phi}}\\
+&= \frac{\omega^{2} \cdot \IC_{\g}^{T} \cdot \brho_{\g}^{-1} \cdot \IC_{\g}}{\omega \cdot \sqrt{\omega^{2} \cdot \IC_{\g}^{T} \cdot \brho_{\g}^{-1} \cdot \IC_{\g}}}\\
+&= \frac{\IC_{\g}^{T} \cdot \brho_{\g}^{-1} \cdot \IC_{\g}}{\sqrt{\IC_{\g}^{T} \cdot \brho_{\g}^{-1} \cdot \IC_{\g}}}\\
+&= \sqrt{\IC_{\g}^{T} \cdot \brho_{\g}^{-1} \cdot \IC_{\g}}.
+\end{align*}
+This verifies Eq.\ (10A.23). We now demonstrate that when $K = 2$, it reduces to Eq.\ (10.27) in the main text of the chapter. We let \[\g = \begin{bmatrix}
+g \\
+g'
+\end{bmatrix},
+\] and $\rho = \corr{g, g'}$. Recall from Eq.\ (10A.25) that \[
+\brho_{\g}^{-1} = \frac{1}{1 - \rho^{2}}
+\begin{bmatrix}
+1 & -\rho \\
+-\rho & 1
+\end{bmatrix}.
+\] This makes
+\begin{align*}
+\IC_{\g}^{T} \cdot \brho_{\g}^{-1} \cdot \IC_{\g} &= \frac{1}{1 - \rho^{2}}
+\begin{bmatrix}
+\mathrm{IC}_{g} & \mathrm{IC}_{g'}
+\end{bmatrix}
+\begin{bmatrix}
+1 & -\rho \\
+-\rho & 1
+\end{bmatrix}
+\begin{bmatrix}
+\mathrm{IC}_{g}\\
+\mathrm{IC}_{g'}
+\end{bmatrix}
+\\
+&= \frac{1}{1 - \rho^{2}} (\mathrm{IC}_{g}(\mathrm{IC}_{g} - \rho\mathrm{IC}_{g'}) + \mathrm{IC}_{g'}(\mathrm{IC}_{g'} - \rho\mathrm{IC}_{g})) \\
+&= \frac{\mathrm{IC}_{g}^{2} - 2 \rho \mathrm{IC}_{g}\mathrm{IC}_{g'} + \mathrm{IC}_{g'}^{2}}{1 - \rho^{2}}.
+\end{align*}
+Hence, Eq.\ (10A.23) reduces to Eq.\ (10.27) from the main text of the chapter:
+\[\mathrm{IC}_{\phi} = \sqrt{\frac{\mathrm{IC}_{g}^{2} - 2 \rho \mathrm{IC}_{g}\mathrm{IC}_{g'} + \mathrm{IC}_{g'}^{2}}{1 - \rho^{2}}}.\]
 \end{proof}
 
