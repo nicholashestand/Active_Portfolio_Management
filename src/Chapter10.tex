@@ -142,44 +142,53 @@
 
 
 \begin{problem}{10.4}
-  In the case of two forecasts [Eq. (10.20)], (a) what is the variance of the combined forecast? (b) What is its covariance with the return? (c) Verify explicitly that the combination of $g$ and $g'$ in the example leads to an IC of 0.1090. Compare this to the result from Eq. (10.27).
+  In the case of two forecasts [Eq.\ (10.20)], (a) what is the variance of the combined forecast? (b) What is its covariance with the return? (c) Verify explicitly that the combination of $g$ and $g'$ in the example leads to an IC of 0.1090. Compare this to the result from Eq.\ (10.27).
 \end{problem}
 
 \begin{proof}[Solution]
-  We can use the matrix expressions from question 10.3 to determine these properties.\\
+  The combined forecast is given by Eq.\ (10.20): \[\phi = \std{r}\cdot \mathrm{IC}_{g}^{\ast} \cdot z_{g} + \std{r}\cdot \mathrm{IC}_{g'} \cdot z_{g'}.\] We will write $\omega = \std{r}$ and $\rho = \rho_{g, g'}$.
   \begin{enumerate}[label=(\alph*)]
-    \item{The variance of the combined forecasts will be
-      \begin{align*}
-       \sigma^{2}_{\bm{g}}&=\begin{bmatrix} 1 & 1 \end{bmatrix}\cdot \begin{bmatrix} \sigma_{g_{1}}^{2} & \sigma_{g_{1}}\sigma_{g_{2}}\rho_{1,2} \\ \sigma_{g_{1}}\sigma_{g_{2}}\rho_{1,2}	& \sigma_{g_{2}}^{2}\\ \end{bmatrix}\cdot \begin{bmatrix} 1 \\ 1 \end{bmatrix}\\
-       &=\sigma_{g_1}^{2}+\sigma_{_2}^{2}+2\sigma_{g_1}\sigma_{g_2}\rho_{1,2}
-      \end{align*}
-      where the $\sigma^2$ are the individual variances and $\rho_{1,2}$ the correlation between forecasts.}
-    \item{The covariance with the return will be
+    \item Note that $\var{z_{g}} = \var{z_{g'}} = 1$, since these variables are normalised. Moreover, \[\cov{z_{g}, z_{g'}} = \frac{\cov{g, g'}}{\std{g}\std{g'}} = \rho.\] Hence,
     \begin{align*}
-    \sigma_{r,\bm{g}}&=\sigma_{r}\cdot \begin{bmatrix} \mathrm{IC}_{g_{1}} & \mathrm{IC}_{g_{2}} \\\end{bmatrix}
-				\cdot\begin{bmatrix} \sigma_{g_{1}}&0\\  0&\sigma_{g_{2}} \\ \end{bmatrix}\cdot \begin{bmatrix} 1 \\ 1 \end{bmatrix}\\
-		    &=\sigma_{r}\left( \mathrm{IC}_{g_{1}}\sigma_{g_{1}}+\mathrm{IC}_{g_{2}}\sigma_{g_{2}}\right)
+    \var{\phi} &= \cov{\omega \cdot \mathrm{IC}_{g}^{\ast} \cdot z_{g} + \omega \cdot \mathrm{IC}_{g'}^{\ast} \cdot z_{g'},\, \omega \cdot \mathrm{IC}_{g}^{\ast} \cdot z_{g} + \omega \cdot \mathrm{IC}_{g'}^{\ast} \cdot z_{g'}}\\
+    &= \omega^{2}((\mathrm{IC}_{g}^{\ast})^{2} + 2\rho\mathrm{IC}_{g}^{\ast}\mathrm{IC}_{g'}^{\ast} + (\mathrm{IC}_{g'}^{\ast})^{2}).
     \end{align*}
-    }
-    \item{The IC of the combined forecasts is equal to its correlation with the return
+    \item Note that \[\cov{r, z_{g}} = \frac{\cov{r, g}}{\std{g}} = \omega \cdot \mathrm{IC}_{g},\] and similarly $\cov{r, z_{g'}} = \omega \cdot \mathrm{IC}_{g'}$.  The covariance of the combined forecast with the return is then
     \begin{align*}
-     \mathrm{IC}_{\bm{g}}&=\frac{\sigma_{r,g}}{\sigma_{r}\sigma_{g}}\\
-			 &=\frac{\mathrm{IC}_{g_{1}}\sigma_{g_{1}}+\mathrm{IC}_{g_{2}}\sigma_{g_{2}}}{\sqrt{\sigma_{g_1}^{2}+\sigma_{_2}^{2}+2\sigma_{g_1}\sigma_{g_2}\rho_{1,2}}}
+    \cov{r, \phi} &= \cov{r,\, \omega \cdot \mathrm{IC}_{g}^{\ast} \cdot z_{g} + \omega \cdot \mathrm{IC}_{g'} \cdot z_{g'}}\\
+    &= \omega^{2}(\mathrm{IC}_{g}^{\ast}\mathrm{IC}_{g} + \mathrm{IC}_{g}^{\ast}\mathrm{IC}_{g}).
     \end{align*}
-    For the example in the text, $\mathrm{IC}_{g_{1}}=0.0833$, $\mathrm{IC}_{g_{2}}=0.089$,$\sigma_{g_{1}}=4$,$\sigma_{g_{2}}=5$, and $\rho_{g_1,g_2}=
-1/4$. Plugging these values in, we find
+    \item The IC of the combined forecast is equal to its correlation with the return
+	\begin{align*}
+	\mathrm{IC}_{\phi} &= \frac{\cov{r, \phi}}{\std{r}\std{\phi}}\\
+	&= \frac{\omega^{2}(\mathrm{IC}_{g}^{\ast}\mathrm{IC}_{g} + \mathrm{IC}_{g}^{\ast}\mathrm{IC}_{g})}{\omega \sqrt{\omega^{2}((\mathrm{IC}_{g}^{\ast})^{2} + 2\rho\mathrm{IC}_{g}^{\ast}\mathrm{IC}_{g'}^{\ast} + (\mathrm{IC}_{g'}^{\ast})^{2})}}\\
+	&= \frac{\mathrm{IC}_{g}^{\ast}\mathrm{IC}_{g} + \mathrm{IC}_{g'}^{\ast}\mathrm{IC}_{g'}}{\sqrt{(\mathrm{IC}_{g}^{\ast})^{2} + 2\rho\mathrm{IC}_{g}^{\ast}\mathrm{IC}_{g'}^{\ast} + (\mathrm{IC}_{g'}^{\ast})^{2}}}
+	\end{align*}	    
+    For the example in the text, $\mathrm{IC}_{g}=0.0833$, $\mathrm{IC}_{g'}=0.089$, and $\rho =
+1/4$, so 
+	\begin{align*}
+	\mathrm{IC}_{g}^{\ast} &= \frac{\mathrm{IC}_{g} - \rho\mathrm{IC}_{g'}}{1 - \rho^{2}}\\
+	&= \frac{0.0833 - 0.25 \times 0.089}{1 - 1/16}\\
+	&= 0.8648,
+	\end{align*}
+	and
+	\begin{align*}
+	\mathrm{IC}_{g'}^{\ast} &= \frac{\mathrm{IC}_{g'} - \rho\mathrm{IC}_{g}}{1 - \rho^{2}}\\
+	&= \frac{0.089 - 0.25 \times 0.0833}{1 - 1/16}\\
+	&= 0.092712,
+	\end{align*}
+ Plugging these values in, we find
   \begin{align*}
-     \mathrm{IC}_{\bm{g}}&=\frac{0.0833\times4+0.089\times 5}{\sqrt{25+16+2\times 5\times4\times1/4}}\\
-			 &=0.1090
+  \mathrm{IC}_{\phi} &= \frac{0.8648 \times 0.0833 + 0.092712 \times 0.089}{\sqrt{0.08648^{2} + 2 \times 0.25 \times 0.8648 \times 0.092712 + 0.092712^{2}}}\\
+  &= 0.1091
   \end{align*}
-  We can compare this to Eq (10.27), which states
+  We can compare this to Eq.\ (10.27), which states
   \begin{align*}
-   \mathrm{IC}_{\bm{g}}&=\sqrt{\frac{\mathrm{IC}_{\bm{g_{1}}}^{2}+\mathrm{IC}_{\bm{g_{2}}}^{2}-2\rho_{g_{1},g_{2}}\mathrm{IC}_{g_{1}}\mathrm{IC}_{g_{2}}}{1-\rho_{g_{1},g_{2}}^{2}}}\\
+   \mathrm{IC}_{\phi}&=\sqrt{\frac{\mathrm{IC}_{g}^{2}+\mathrm{IC}_{g'}^{2}-2\rho\mathrm{IC}_{g}\mathrm{IC}_{g'}}{1-\rho^{2}}}\\
 		       &=\sqrt{\frac{0.0833^2+0.089^2-2\times1/4\times0.0833\times0.089}{1-1/16}}\\
 		       &=0.1091
   \end{align*}
    The difference is likely due to a rounding error in the calculation of the input terms, most likely the information coefficients.
-     }
   \end{enumerate}
 
 \end{proof}
